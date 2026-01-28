@@ -1157,121 +1157,227 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .collection-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-            }
-            
-            .nav-item {
-                padding: 16px;
-            }
-            
-            .intro {
-                padding: 30px;
-            }
-            
-            .theme-title {
-                font-size: 1.7rem;
-            }
-            
-            .logo {
-                font-size: 2.4rem;
-                letter-spacing: 3px;
-            }
-            
-            .search-main-box {
-                flex-direction: column;
-            }
-            
-            .search-button {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .modal-controls, .video-controls {
-                bottom: 15px;
-                padding: 10px 15px;
-            }
-            
-            .modal-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .modal-info {
-                top: 15px;
-                left: 15px;
-                right: 15px;
-                max-width: none;
-                padding: 15px;
-            }
-            
-            .modal-title {
-                font-size: 1.4rem;
-            }
-            
-            .modal-author {
-                font-size: 1rem;
-            }
-            
-            .video-play-button {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .video-play-button i {
-                font-size: 1.5rem;
-            }
+        /* 在现有CSS的@media (max-width: 768px)部分添加以下样式 */
+
+@media (max-width: 768px) {
+    /* 优化导航栏 - 改为可滚动的小型导航 */
+    nav {
+        position: static; /* 取消固定定位 */
+        background: #2c2c2c;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: 50px; /* 显著减小高度 */
+        padding: 0;
+    }
+    
+    .nav-container {
+        display: inline-flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+        padding: 0;
+        min-width: 100%;
+        height: 100%;
+    }
+    
+    .nav-item {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+    
+    .nav-item.active::after {
+        height: 2px;
+        bottom: 0;
+    }
+    
+    /* 重新调整页面布局，因为导航栏不再是固定的 */
+    header {
+        padding: 50px 0 30px;
+        margin-bottom: 20px;
+    }
+    
+    /* 添加一个固定的顶部导航按钮，用于快速访问菜单 */
+    .mobile-nav-toggle {
+        display: none; /* 默认隐藏，在小屏幕上显示 */
+    }
+    
+    /* 当屏幕更小时，使用汉堡菜单替代 */
+    @media (max-width: 480px) {
+        /* 隐藏常规导航，显示汉堡菜单 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 50px;
+            overflow: hidden;
+            padding: 0;
+            transition: height 0.3s ease;
         }
         
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            header {
-                padding: 60px 0 40px;
-            }
-            
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-                padding: 0 10px;
-            }
-            
-            .theme-title {
-                padding-left: 15px;
-                font-size: 1.5rem;
-            }
-            
-            .theme-title i {
-                padding: 10px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                margin-right: 15px;
-            }
-            
-            .intro {
-                padding: 20px;
-            }
-            
-            .advanced-search-container {
-                padding: 20px;
-            }
-            
-            .collection-img-container {
-                height: 220px;
-            }
+        nav.expanded {
+            height: auto;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        
+        .nav-container {
+            flex-direction: column;
+            display: flex;
+            min-width: 100%;
+            padding-top: 50px; /* 为汉堡按钮留出空间 */
+        }
+        
+        .nav-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .nav-item.active::after {
+            height: 100%;
+            width: 4px;
+            left: 0;
+            bottom: auto;
+            background: linear-gradient(180deg, #d4af37, #ffd700);
+        }
+        
+        /* 汉堡菜单按钮 */
+        .mobile-nav-toggle {
+            display: flex;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1001;
+            background: linear-gradient(135deg, #d4af37 0%, #c19b2c 100%);
+            color: #2c2c2c;
+            border: none;
+            padding: 12px 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 60px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .mobile-nav-toggle i {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* 调整页面内容，避免被固定导航遮挡 */
+        body {
+            padding-top: 50px; /* 为固定导航留出空间 */
+        }
+        
+        header {
+            margin-top: 0;
+        }
+    }
+}
+
+/* 在现有CSS的@media (max-width: 576px)部分更新以下样式 */
+@media (max-width: 576px) {
+    /* 进一步减小导航高度（如果使用水平导航方案） */
+    nav:not(.expanded) {
+        height: 45px;
+    }
+    
+    .nav-item {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    /* 调整内容间距 */
+    header {
+        padding: 40px 0 25px;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    /* 高级搜索区域更紧凑 */
+    .advanced-search-container {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    /* 收藏品网格更紧凑 */
+    .collection-grid {
+        gap: 20px;
+    }
+    
+    .collection-img-container {
+        height: 180px;
+    }
+    
+    .collection-content {
+        padding: 15px;
+    }
+    
+    /* 主题标题更紧凑 */
+    .theme-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .theme-title i {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        margin-right: 10px;
+        padding: 7px;
+    }
+}
+
+/* 超小屏幕额外优化 */
+@media (max-width: 400px) {
+    nav:not(.expanded) {
+        height: 40px;
+    }
+    
+    .nav-item {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .mobile-nav-toggle {
+        width: 50px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    body {
+        padding-top: 40px;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .collection-img-container {
+        height: 160px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1300,6 +1406,11 @@
         </div>
     </nav>
     
+	<!-- 在nav标签后添加汉堡菜单按钮（针对小屏幕） -->
+<button class="mobile-nav-toggle" id="mobile-nav-toggle">
+    <i class="fas fa-bars"></i>
+</button>
+
     <main class="container">
         <!-- 收藏馆介绍 -->
         <section id="intro" class="intro">
@@ -2393,6 +2504,70 @@
                 }
             });
 
+
+   // 移动端导航切换
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const navElement = document.querySelector('nav');
+    
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navElement.classList.toggle('expanded');
+            this.classList.toggle('active');
+            
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (navElement.classList.contains('expanded')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 点击导航项后收起菜单
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 480) {
+                    navElement.classList.remove('expanded');
+                    mobileNavToggle.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // 点击页面其他区域收起菜单
+        document.addEventListener('click', function(e) {
+            if (!navElement.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                if (window.innerWidth <= 480) {
+                    navElement.classList.remove('expanded');
+                    mobileNavToggle.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    }
+    
+    // 窗口大小变化时重置导航状态
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 480) {
+            // 在大屏幕上确保导航是展开的
+            if (navElement) navElement.classList.remove('expanded');
+            if (mobileNavToggle) {
+                mobileNavToggle.classList.remove('active');
+                const icon = mobileNavToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
+    });
             // 设置搜索标签事件
             searchTags.forEach(tag => {
                 tag.addEventListener('click', () => {
@@ -2657,6 +2832,30 @@
                 return '此作品技法精湛，构图严谨，体现了版画艺术的独特魅力和艺术价值。';
             }
         }
+		
+		 // 添加触摸事件支持
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // 防止双击缩放
+    document.addEventListener('dblclick', function(e) {
+        if (e.target.classList.contains('collection-img') || 
+            e.target.classList.contains('collection-img-container')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+	
+	// 改善移动端模态框体验
+    if ('ontouchstart' in window) {
+        // 添加触摸关闭模态框支持
+        imageModal.addEventListener('touchstart', function(e) {
+            if (e.target === imageModal) closeAllModals();
+        });
+        
+        videoModal.addEventListener('touchstart', function(e) {
+            if (e.target === videoModal) closeAllModals();
+        });
+    }
+
 
         // 获取收藏价值描述
         function getCollectionValue(print) {
@@ -2688,7 +2887,10 @@
             const century = centuryFilter.value;
             const technique = techniqueFilter.value;
             const priceRange = priceFilter.value;
-            
+            // 移动端搜索后收起键盘
+    if ('ontouchstart' in window) {
+        searchInput.blur();
+    }
             // 过滤作品
             currentFilteredPrints = printsData.filter(print => {
                 // 文本搜索
