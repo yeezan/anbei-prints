@@ -5,233 +5,1094 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页间拾贝版画收藏馆 - 经典版画艺术珍藏</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 霞鹜文楷字体 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background-color: #f8f5f0;
             color: #333;
             line-height: 1.6;
+            font-family: 'Source Serif Pro', 'Noto Serif SC', serif;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
         /* 头部样式 */
         header {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
             background-size: cover;
             background-position: center;
             color: #fff;
-            padding: 60px 0 40px;
+            padding: 80px 0 60px;
             text-align: center;
             margin-bottom: 40px;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #e8d2b5, #d4af37);
         }
         
         .logo {
-            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.2rem;
             font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
             color: #e8d2b5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .logo span {
             font-weight: 700;
             color: #d4af37;
+            position: relative;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #e8d2b5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        /* 高级搜索区域 */
+        .advanced-search-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.1);
+            margin: 0 auto 40px;
+            max-width: 1000px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .search-section-title {
+            color: #8b4513;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-section-title i {
+            color: #d4af37;
+        }
+        
+        .search-main-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 16px 24px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: 'Source Serif Pro', serif;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        .search-button {
+            background: linear-gradient(135deg, #d4af37 0%, #c19b2c 100%);
+            color: #2c2c2c;
+            border: none;
+            padding: 0 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .search-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-filter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #8b4513;
+            font-weight: 500;
+        }
+        
+        .search-filter select {
+            background: transparent;
+            border: none;
+            color: #8b4513;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .search-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: #8b4513;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .search-tag:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .search-results {
+            background: #f9f5f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: none;
+        }
+        
+        .search-results.active {
+            display: block;
+        }
+        
+        .search-result-count {
+            color: #8b4513;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+        }
+        
+        .search-result-item {
+            padding: 12px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-result-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .search-result-info {
+            flex: 1;
+        }
+        
+        .search-result-title {
+            font-weight: 600;
+            color: #8b4513;
+        }
+        
+        .search-result-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .search-result-year {
+            background: #f0e6d6;
+            color: #8b4513;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
         
         /* 导航样式 */
         nav {
-            background-color: #2c2c2c;
+            background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
         
         .nav-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            position: relative;
         }
         
         .nav-item {
-            padding: 18px 25px;
+            padding: 20px 28px;
             color: #e8d2b5;
             text-decoration: none;
             font-weight: 500;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .nav-item:hover::before {
+            left: 100%;
         }
         
         .nav-item:hover, .nav-item.active {
-            background-color: #3a3a3a;
+            background: linear-gradient(180deg, #3a3a3a 0%, #2c2c2c 100%);
             color: #d4af37;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #ffd700);
         }
         
         /* 介绍区域 */
         .intro {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf8 100%);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(139, 69, 19, 0.08);
+            margin-bottom: 60px;
             line-height: 1.8;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+        
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #8b4513, #d4af37);
+            border-radius: 12px 12px 0 0;
         }
         
         .intro h2 {
             color: #8b4513;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
             border-bottom: 2px solid #e8d2b5;
+            font-size: 2.2rem;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, transparent);
         }
         
         .intro p {
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            color: #555;
+        }
+        
+        /* 垂直时间轴样式 */
+        .timeline-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f7f2 100%);
+            padding: 60px 0;
+            margin: 50px 0;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #8b4513, #d4af37);
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #8b4513;
+            margin-bottom: 50px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .timeline-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #8b4513);
+        }
+        
+        .timeline-vertical {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 50px;
+        }
+        
+        .century-block {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .century-block.active {
+            margin-bottom: 60px;
+        }
+        
+        .century-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .century-title {
+            font-size: 1.8rem;
+            color: #8b4513;
+            font-weight: 600;
+            margin-right: 20px;
+            position: relative;
+            z-index: 2;
+            background: #f8f5f0;
+            padding-right: 20px;
+        }
+        
+        .century-count {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+        
+        .century-dot {
+            width: 24px;
+            height: 24px;
+            background: #d4af37;
+            border: 4px solid #8b4513;
+            border-radius: 50%;
+            position: absolute;
+            left: -62px;
+            z-index: 2;
+        }
+        
+        .century-line {
+            position: absolute;
+            left: -50px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 40px);
+            background: linear-gradient(180deg, #8b4513, #d4af37, #8b4513);
+            z-index: 1;
+        }
+        
+        .century-block:last-child .century-line {
+            height: 100%;
+        }
+        
+        .century-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-left: 20px;
+        }
+        
+        .century-works.expanded {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .decade-group {
+            margin-bottom: 25px;
+        }
+        
+        .decade-title {
+            font-size: 1.3rem;
+            color: #8b4513;
             margin-bottom: 15px;
-            font-size: 1.05rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+        }
+        
+        .decade-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        
+        .work-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-left-color: #8b4513;
+        }
+        
+        .work-year {
+            background: #f9f5f0;
+            color: #8b4513;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 60px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .work-title {
+            flex: 1;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .work-badge {
+            background: #8b4513;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .work-badge.books {
+            background: #2c2c2c;
+        }
+        
+        .timeline-legend {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 69, 19, 0.2);
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .legend-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .legend-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            vertical-align: middle;
         }
         
         /* 主题分类 */
         .theme-section {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            position: relative;
         }
         
         .theme-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #8b4513;
-            margin-bottom: 25px;
-            padding-left: 15px;
-            border-left: 5px solid #d4af37;
+            margin-bottom: 35px;
+            padding-left: 20px;
+            border-left: 6px solid #d4af37;
             display: flex;
             align-items: center;
+            font-weight: 600;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .theme-title::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            opacity: 0.2;
         }
         
         .theme-title i {
-            margin-right: 15px;
+            margin-right: 20px;
             color: #d4af37;
+            font-size: 1.8rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 12px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         /* 藏品网格 */
         .collection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
         }
         
         .collection-item {
-            background-color: #fff;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf8 100%);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+        
+        .collection-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #8b4513);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .collection-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        .collection-img {
-            height: 250px;
+        .collection-item:hover::before {
+            opacity: 1;
+        }
+        
+        .collection-img-container {
+            height: 280px;
             overflow: hidden;
+            position: relative;
+            cursor: pointer;
         }
         
-        .collection-img img {
+        .collection-img, .collection-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         
-        .collection-item:hover .collection-img img {
-            transform: scale(1.05);
+        .collection-video {
+            object-fit: cover;
+        }
+        
+        .collection-item:hover .collection-img,
+        .collection-item:hover .collection-video {
+            transform: scale(1.08);
+        }
+        
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .video-play-button i {
+            color: #fff;
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+        
+        .video-play-button:hover {
+            background: rgba(212, 175, 55, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .video-indicator i {
+            color: #d4af37;
+        }
+        
+        .magnifier-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .magnifier-overlay i {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            padding: 15px;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .collection-img-container:hover .magnifier-overlay {
+            opacity: 1;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .collection-img-container:hover .magnifier-overlay i {
+            transform: scale(1);
         }
         
         .collection-content {
-            padding: 25px;
+            padding: 30px;
         }
         
         .collection-title {
-            font-size: 1.4rem;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
             color: #8b4513;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             line-height: 1.3;
+            font-weight: 600;
         }
         
         .collection-author {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 15px;
+            color: #8b4513;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
             font-style: italic;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+        }
+        
+        .collection-author::before {
+            content: '✎';
+            margin-right: 8px;
+            font-style: normal;
         }
         
         .collection-description {
             color: #555;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* 标签样式 */
+        .collection-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .collection-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: #8b4513;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .collection-tag:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .collection-tag.active {
+            background: linear-gradient(135deg, #d4af37 0%, #c19b2c 100%);
+            color: #2c2c2c;
+            font-weight: 600;
         }
         
         .value-section {
-            background-color: #f9f5f0;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
+            background: linear-gradient(135deg, #f9f5f0 0%, #f2ebe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .value-title {
             color: #8b4513;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .value-title::before {
+            content: '★';
+            margin-right: 8px;
+            color: #d4af37;
         }
         
         .value-content {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
         
         .price-tag {
             display: inline-block;
-            background-color: #d4af37;
+            background: linear-gradient(135deg, #d4af37 0%, #c19b2c 100%);
             color: #2c2c2c;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 5px;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 模态框样式 - 增强版放大镜 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: hidden;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            max-width: 90%;
+            max-height: 85%;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.7);
+        }
+        
+        .modal-video {
+            max-width: 90%;
+            max-height: 85%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .modal-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background-color: rgba(0,0,0,0.7);
+            padding: 15px 25px;
+            border-radius: 30px;
+            z-index: 10;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background-color: rgba(0,0,0,0.7);
+            padding: 15px 25px;
+            border-radius: 30px;
+            z-index: 10;
+        }
+        
+        .modal-btn {
+            background: rgba(212, 175, 55, 0.8);
+            border: none;
+            color: #2c2c2c;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-btn:hover {
+            background: #d4af37;
+            transform: scale(1.1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            background: rgba(0,0,0,0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            color: #d4af37;
+            transform: scale(1.1);
+        }
+        
+        /* 放大镜效果 - 模态框内 */
+        .magnifier {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid rgba(212, 175, 55, 0.9);
+            background: rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            overflow: hidden;
+            z-index: 5;
+            display: none;
+        }
+        
+        .magnifier.active {
+            opacity: 1;
+            display: block;
+        }
+        
+        .magnifier-img {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            transform: scale(2);
+            transform-origin: 0 0;
+        }
+        
+        .modal-info {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 400px;
+            z-index: 10;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .modal-author {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.8;
         }
         
         /* 页脚样式 */
         footer {
-            background-color: #2c2c2c;
+            background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
             color: #e8d2b5;
-            padding: 50px 0 30px;
-            margin-top: 60px;
+            padding: 60px 0 40px;
+            margin-top: 80px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #8b4513, #d4af37);
         }
         
         .footer-content {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .footer-section {
@@ -242,24 +1103,60 @@
         
         .footer-section h3 {
             color: #d4af37;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, transparent);
         }
         
         .footer-section p {
             margin-bottom: 15px;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid #444;
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                gap: 30px;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .collection-grid {
                 grid-template-columns: 1fr;
@@ -270,15 +1167,109 @@
             }
             
             .nav-item {
-                padding: 15px;
+                padding: 16px;
             }
             
             .intro {
-                padding: 25px;
+                padding: 30px;
             }
             
             .theme-title {
+                font-size: 1.7rem;
+            }
+            
+            .logo {
+                font-size: 2.4rem;
+                letter-spacing: 3px;
+            }
+            
+            .search-main-box {
+                flex-direction: column;
+            }
+            
+            .search-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .modal-controls, .video-controls {
+                bottom: 15px;
+                padding: 10px 15px;
+            }
+            
+            .modal-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-info {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                max-width: none;
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            
+            .modal-author {
+                font-size: 1rem;
+            }
+            
+            .video-play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .video-play-button i {
                 font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .theme-title {
+                padding-left: 15px;
+                font-size: 1.5rem;
+            }
+            
+            .theme-title i {
+                padding: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin-right: 15px;
+            }
+            
+            .intro {
+                padding: 20px;
+            }
+            
+            .advanced-search-container {
+                padding: 20px;
+            }
+            
+            .collection-img-container {
+                height: 220px;
             }
         }
     </style>
@@ -288,7 +1279,7 @@
     <header>
         <div class="container">
             <h1 class="logo">页间拾贝<span>版画收藏馆</span></h1>
-            <p class="subtitle">汇聚16-20世纪欧洲经典版画艺术珍品 · 传承百年艺术精髓</p>
+            <p class="subtitle">汇聚16-20世纪欧洲经典版画艺术珍品 · 追溯百年艺术脉络 · 传承文明印记</p>
         </div>
     </header>
     
@@ -296,14 +1287,16 @@
     <nav>
         <div class="container nav-container">
             <a href="#intro" class="nav-item active">收藏馆介绍</a>
+            <a href="#search" class="nav-item">搜索鉴赏</a>
+             <!-- <a href="#timeline" class="nav-item">时间脉络</a> -->
             <a href="#master" class="nav-item">大师经典</a>
             <a href="#religious" class="nav-item">宗教题材</a>
             <a href="#landscape" class="nav-item">风景建筑</a>
             <a href="#literary" class="nav-item">文学史诗</a>
-			<a href="#war" class="nav-item">战争题材</a>
-			<a href="#dailylife" class="nav-item">世俗生活</a>
+            <a href="#war" class="nav-item">战争题材</a>
+			<a href="#history" class="nav-item">历史一瞬</a>
+            <a href="#dailylife" class="nav-item">世俗生活</a>
             <a href="#books" class="nav-item">版画书籍</a>
-            <a href="#contact" class="nav-item">联系我们</a>
         </div>
     </nav>
     
@@ -316,157 +1309,93 @@
             <p>本馆所有藏品均经过专业鉴定，来源清晰，保存状态良好。我们希望通过这些经典作品，让观众领略版画艺术的独特魅力，理解不同历史时期的艺术风格与文化背景。</p>
         </section>
         
+        <!-- 高级搜索区域 -->
+        <section id="search" class="advanced-search-container">
+            <h2 class="search-section-title"><i class="fas fa-search"></i>高级搜索与鉴赏</h2>
+            
+            <div class="search-main-box">
+                <input type="text" class="search-input" id="search-input" placeholder="搜索作品名称、作者、题材、年份或关键词...">
+                <button class="search-button" id="search-button">
+                    <i class="fas fa-search"></i> 搜索
+                </button>
+            </div>
+            
+            <div class="search-options">
+                <div class="search-filter">
+                    <span>世纪：</span>
+                    <select id="century-filter">
+                        <option value="">全部</option>
+                        <option value="16">16世纪</option>
+                        <option value="17">17世纪</option>
+                        <option value="18">18世纪</option>
+                        <option value="19">19世纪</option>
+                        <option value="20">20世纪</option>
+                    </select>
+                </div>
+                
+                <div class="search-filter">
+                    <span>技法：</span>
+                    <select id="technique-filter">
+                        <option value="">全部</option>
+                        <option value="木版画">木版画</option>
+                        <option value="铜版画">铜版画</option>
+                        <option value="蚀刻版画">蚀刻版画</option>
+                        <option value="珂罗版">珂罗版</option>
+                        <option value="套色木刻">套色木刻</option>
+                        <option value="钢版画">钢版画</option>
+						<option value="手工上色版画">手工上色版画</option>
+                    </select>
+                </div>
+                
+                <div class="search-filter">
+                    <span>藏品等级：</span>
+                    <select id="price-filter">
+                        <option value="">全部</option>
+                        <option value="博物馆级">博物馆级</option>
+                        <option value="典藏级">典藏级</option>
+                        <option value="标准收藏级">标准收藏级</option>
+                        <option value="装饰级">装饰级</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="search-tags">
+                <div class="search-tag" data-tag="伦勃朗">伦勃朗</div>
+                <div class="search-tag" data-tag="丢勒">丢勒</div>
+                <div class="search-tag" data-tag="多雷">多雷</div>
+                <div class="search-tag" data-tag="柯罗">柯罗</div>
+				<div class="search-tag" data-tag="透纳">透纳</div>
+                <div class="search-tag" data-tag="宗教">宗教题材</div>
+                <div class="search-tag" data-tag="风景">风景</div>
+                <div class="search-tag" data-tag="建筑">建筑</div>
+                <div class="search-tag" data-tag="文学">文学</div>
+                <div class="search-tag" data-tag="战争">战争</div>
+                <div class="search-tag" data-tag="19世纪">19世纪</div>
+                <div class="search-tag" data-tag="蚀刻版画">蚀刻版画</div>
+                <div class="search-tag" data-tag="木版画">木版画</div>
+                <div class="search-tag" data-tag="视频">视频展示</div>
+            </div>
+            
+            <div class="search-results" id="search-results">
+                <div class="search-result-count">找到 <span id="result-count">0</span> 个结果</div>
+                <div id="result-list"></div>
+            </div>
+        </section>
+        
+		
+       <style>
+       .hidden {
+        display: none;
+               }
+       </style>
+
+        
+</div>
         <!-- 大师经典主题 -->
         <section id="master" class="theme-section">
             <h2 class="theme-title"><i class="fas fa-palette"></i>大师经典作品</h2>
             <div class="collection-grid">
-			
-
-<!-- 战争的悲惨 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1633_卡洛_战争的悲惨.jpg" alt="卡洛版画《战争的悲惨》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">战争的悲惨</h3>
-        <p class="collection-author">作者：雅克·卡洛</p>
-        <p class="collection-description">17世纪蚀刻版画，巴洛克时期法国版画家雅克·卡洛作品，描绘三十年战争带来的苦难与破坏。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">卡洛是版画史上最重要的艺术家之一，其"战争的悲惨"系列开创了战争题材艺术的新范式，影响了后世的戈雅等人。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">17世纪原版卡洛作品极为罕见，此作是版画史上的里程碑作品，具有极高的历史和艺术价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥180,000 - ¥280,000</span>
-        </div>
-    </div>
-</div>
-                <!-- 伦勃朗作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1891_伦勃朗_天有不测风云.jpg" alt="伦勃朗版画_天有不测风云">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">天有不测风云</h3>
-                        <p class="collection-author">作者：伦勃朗</p>
-                        <p class="collection-description">伦勃朗代表性蚀刻版画，展现了艺术家对光影的极致掌控和深刻的人文关怀。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">伦勃朗是西方艺术史上最重要的版画家之一，他的蚀刻技法开创了新的艺术表现方式。此作品体现了其标志性的明暗对比法和细腻的人物刻画。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">伦勃朗存世版画作品稀少，保存完好的早期印刷品尤为珍贵。此作品品相良好，具有极高的收藏价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥180,000 - ¥250,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-				
-				<!-- 家庭（伦勃朗） -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1876_伦勃朗_家庭.jpg" alt="伦勃朗版画《家庭》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">家庭</h3>
-        <p class="collection-author">作者：伦勃朗</p>
-        <p class="collection-description">1876年德国艺术家威廉·昂格蚀刻铜版画《家庭》，源自伦勃朗作品，描绘温馨家庭场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作虽然为19世纪复制品，但忠实地再现了伦勃朗原作中对家庭温暖氛围的捕捉和细腻的人物刻画。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">威廉·昂格是19世纪德国著名的版画家，其复制伦勃朗的作品具有很高的技术水准和收藏价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥45,000 - ¥68,000</span>
-        </div>
-    </div>
-</div>
-
-                <!-- 丢勒作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1896_丢勒_亚当与夏娃.jpg" alt="丢勒版画《亚当与夏娃》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">亚当与夏娃</h3>
-                        <p class="collection-author">作者：丢勒</p>
-                        <p class="collection-description">1896年珂罗版复制品，源自丢勒1504年创作的经典铜版画，展现文艺复兴时期对人体美的追求。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">丢勒是北方文艺复兴的代表人物，他的版画作品以精密的线条和科学的人体比例著称。此作是文艺复兴时期人文主义思想的典型体现。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">19世纪末的珂罗版复制技术完美再现了原作细节，是收藏丢勒作品的重要途径。此版保存完好，具有较高的收藏价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥85,000 - ¥120,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-				
-				<!-- 俄耳甫斯迎接黎明 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/柯罗_俄耳甫斯迎接黎明.jpg" alt="柯罗版画《俄耳甫斯迎接黎明》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">俄耳甫斯迎接黎明</h3>
-        <p class="collection-author">作者：卡米耶·柯罗</p>
-        <p class="collection-description">大幅蚀刻干刻铜版画，限量版，描绘希腊神话中音乐家俄耳甫斯迎接黎明的诗意场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">柯罗以其诗意的风景画闻名，此作将希腊神话与自然景色完美结合，体现了其艺术中的浪漫主义倾向。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">限量版蚀刻干刻铜版画制作工艺复杂，存世量少，且题材为柯罗作品中较少见的神话题材。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥85,000 - ¥125,000</span>
-        </div>
-    </div>
-</div>
-
-
-
-                <!-- 柯罗作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1875_柯罗_日落.jpg" alt="柯罗版画《日落》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">日落</h3>
-                        <p class="collection-author">作者：柯罗</p>
-                        <p class="collection-description">1875年法国蚀刻铜版画，大英博物馆收藏编号：1877,0210.435，法国巴比松画派代表作。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">柯罗是巴比松画派的核心人物，他的风景画影响了后来的印象派。此作品以诗意的氛围和细腻的光影表现自然之美。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">此版画有大英博物馆收藏记录，来源清晰，且由ARCHES版画专用水印纸印制，品相优良，收藏价值极高。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥150,000 - ¥220,000</span>
-                        </div>
-                    </div>
-                </div>
-				
-				
-				             <!-- 巴黎建筑 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1883_巴黎老城.jpg" alt="阿尔弗雷德·布鲁内-德班《巴黎老城-巴黎圣母院》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">巴黎老城-巴黎圣母院</h3>
-                        <p class="collection-author">作者：阿尔弗雷德·布鲁内-德班</p>
-                        <p class="collection-description">1883年原创蚀刻版画，描绘19世纪末巴黎圣母院及周边街景，具有浓厚的历史气息。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">19世纪巴黎城市景观版画记录了巴黎城市变迁，具有重要的历史文献价值。此作技法精湛，细节丰富。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">巴黎圣母院在2019年火灾后，相关历史图像更显珍贵。此作为原版蚀刻版画，具有特殊的纪念意义。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥45,000 - ¥70,000</span>
-                        </div>
-                    </div>
-                </div>
-				
-				
+                <!-- 所有版画数据将在这里动态生成 -->
             </div>
         </section>
         
@@ -474,508 +1403,15 @@
         <section id="religious" class="theme-section">
             <h2 class="theme-title"><i class="fas fa-church"></i>宗教与神话题材</h2>
             <div class="collection-grid">
-                <!-- 多雷宗教题材作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1870_多雷_耶稣之死.jpg" alt="多雷版画《耶稣之死》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">耶稣之死</h3>
-                        <p class="collection-author">作者：古斯塔夫·多雷</p>
-                        <p class="collection-description">1870年木版画，多雷圣经插图系列中的经典之作，尺寸40.5x29.7cm，品相完好。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">多雷的圣经插图系列是19世纪最著名的版画作品之一，融合了浪漫主义的戏剧性和古典主义的严谨构图。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">多雷的木口木刻技法达到了版画艺术的巅峰，其作品在市场上一直备受追捧。此作尺寸较大，保存状态良好。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥65,000 - ¥95,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 多雷圣经题材作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1870_多雷_浪子回头.jpg" alt="多雷版画《浪子回头》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">浪子回头</h3>
-                        <p class="collection-author">作者：古斯塔夫·多雷</p>
-                        <p class="collection-description">1870年木版画，多雷圣经插图系列第70幅，尺寸40.5x29.7cm，品相良好。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">多雷以精湛的木刻技法生动描绘了圣经中"浪子回头"的经典场景，人物情感表现丰富，构图充满戏剧性。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">多雷的圣经插图系列完整保存的不多，单幅作品在市场上流通较少，具有较高的稀缺性。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥60,000 - ¥90,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-				
-				
-<!-- 巴比伦的覆灭 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_巴比伦的覆灭.jpg" alt="多雷版画《巴比伦的覆灭》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">巴比伦的覆灭</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列第112幅，纸张40.5x29.7cm，描绘圣经中巴比伦毁灭的场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">多雷以宏大的场景和细腻的细节描绘了圣经中巴比伦城的毁灭，展现了其超凡的想象力和构图能力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">多雷圣经插图系列是版画史上的里程碑作品，此幅描绘的巴比伦主题具有特殊的历史和宗教意义。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥68,000 - ¥98,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 西奈山立法 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_西奈山立法.jpg" alt="多雷版画《西奈山立法》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">西奈山立法</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列第151幅，纸张40.5x29.7cm，描绘摩西在西奈山接受十诫的场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以戏剧性的光线和庄严的构图表现了圣经中这一重要时刻，体现了多雷对宗教主题的深刻理解。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">西奈山立法是圣经故事的核心场景，此作在整套插图系列中具有特殊地位，品相完好。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥65,000 - ¥92,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 雅克赴埃及 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_雅克赴埃及.jpg" alt="多雷版画《雅克赴埃及》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">雅克赴埃及</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，纸张36.5*27.5cm，包含文字护纸页，描绘雅各前往埃及的故事。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">多雷以细腻的线条和生动的人物表情展现了雅各家族迁徙的场景，体现了其对叙事性画面的掌控能力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">此作带有原始文字护纸页，完整性好，是多雷圣经插图中叙事性较强的作品。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥58,000 - ¥85,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 尼罗河上的摩西 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_尼罗河上的摩西.jpg" alt="多雷版画《尼罗河上的摩西》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">尼罗河上的摩西</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，纸张36.5*27.5cm，包含文字护纸页，描绘婴儿摩西在尼罗河上的故事。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以柔和的色调和温馨的氛围表现了摩西婴儿时期的场景，展现了多雷作品中的温情一面。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">摩西主题在多雷作品中反复出现，此幅是其婴儿时期的描绘，具有题材上的特殊性。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥62,000 - ¥88,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 参孙之死 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_参孙之死.jpg" alt="多雷版画《参孙之死》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">参孙之死</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，纸张36.5*27.5cm，包含文字护纸页，描绘大力士参孙的悲壮结局。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">多雷以强烈的戏剧冲突和动感构图表现了参孙生命最后时刻的悲壮场景，是其圣经插图中的经典之作。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">参孙故事是圣经中最具戏剧性的情节之一，此作完美呈现了其悲剧高潮，具有很高的收藏价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥70,000 - ¥100,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 耶稣平息风浪 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_耶稣平息风浪.jpg" alt="多雷版画《耶稣平息风浪》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">耶稣平息风浪</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，纸张36.5*27.5cm，包含文字护纸页，描绘耶稣平息海上风暴的神迹。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以动态的海浪和惊恐的门徒形象衬托出耶稣的平静与威严，是多雷对神迹题材的成功诠释。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">耶稣神迹主题在宗教艺术中具有重要意义，此作保存完好且带有护纸页，完整性高。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥63,000 - ¥90,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 巴比伦军队的覆灭 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_巴比伦的覆灭.jpg" alt="多雷版画《巴比伦军队的覆灭》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">巴比伦军队的覆灭</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，包含文字护页，描绘巴比伦军队被击败的场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">多雷以宏大的战争场面和细腻的士兵描绘展现了古代战争的惨烈，是其军事题材的代表作。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">此作是多雷圣经插图中少有的军事题材作品，且带有原始护页，保存状态良好。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥66,000 - ¥95,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 以赛亚关于巴比伦的预言 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1870_多雷_以赛亚关于巴比伦的预言.jpg" alt="多雷版画《以赛亚关于巴比伦的预言》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">以赛亚关于巴比伦的预言</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1870年木版画，多雷圣经插图系列作品，描绘先知以赛亚关于巴比伦覆灭的预言场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作将先知形象与未来景象巧妙结合，体现了多雷对圣经预言题材的独特理解和表现力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">以赛亚书是圣经中重要的先知书，此作主题具有深刻的宗教和哲学意义。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥60,000 - ¥88,000</span>
-        </div>
-    </div>
-</div>
-
-                <!-- 丢勒宗教题材作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1896_耶稣下葬.jpg" alt="丢勒版画《耶稣下葬》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">耶稣下葬</h3>
-                        <p class="collection-author">作者：丢勒</p>
-                        <p class="collection-description">1896年珂罗版版画，再现丢勒宗教题材经典作品，技法精湛，细节丰富。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">丢勒的宗教题材作品体现了文艺复兴时期北方艺术家对宗教主题的深刻思考与精湛技艺。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">19世纪末的珂罗版技术完美复制了丢勒原作的精细线条，是收藏丢勒作品的重要版本。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥75,000 - ¥110,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-				
-				
-<!-- "虔诚者"被逐出教会 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_劳伦斯_“虔诚者”被逐出教会.jpg" alt="劳伦斯版画《"虔诚者"被逐出教会》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">"虔诚者"被逐出教会</h3>
-        <p class="collection-author">作者：劳伦斯</p>
-        <p class="collection-description">1889年木刻版画，尺寸30x21cm，法国画家Jean-Paul Laurens作品，描绘宗教冲突场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">劳伦斯以历史画著称，其作品常表现宗教与权力的冲突，此作以戏剧性的构图展现了教权与信仰的张力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">19世纪末的木刻版画在技法上达到了新的高度，此作主题深刻，具有思想性和艺术性的双重价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥48,000 - ¥72,000</span>
-        </div>
-    </div>
-</div>
-
-
-<!-- 庇护七世和红衣主教 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_雅克路易大卫_庇护七世和红衣主教.jpg" alt="大卫版画《庇护七世和红衣主教》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">庇护七世和红衣主教</h3>
-        <p class="collection-author">作者：雅克·路易·大卫</p>
-        <p class="collection-description">1889年木版画，尺寸30x21cm，法国古典主义画派奠基人大卫作品，描绘教皇与主教会面场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">大卫是新古典主义的代表人物，其作品以严谨的构图和历史真实性著称，此作体现了其典型的艺术风格。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">大卫的原作多收藏于各大博物馆，版画复制品成为私人收藏其作品的重要途径，具有较高的收藏价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥68,000 - ¥100,000</span>
-        </div>
-    </div>
-</div>
-
-
-<!-- 耶稣下葬 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1896_耶稣下葬.jpg" alt="版画《耶稣下葬》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">耶稣下葬</h3>
-        <p class="collection-author">宗教题材版画</p>
-        <p class="collection-description">1896年珂罗版版画，描绘耶稣被钉十字架后下葬的悲伤场景，人物情感表现深刻。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以庄重的构图和细腻的人物刻画表现了基督教艺术的核心主题，体现了19世纪末宗教艺术的典型风格。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">珂罗版技术能够完美再现原作的微妙色调，此作品相良好，是收藏宗教题材版画的优秀选择。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥45,000 - ¥68,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 圣克里斯托弗 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1896_圣克里斯托弗.jpg" alt="版画《圣克里斯托弗》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">圣克里斯托弗</h3>
-        <p class="collection-author">宗教题材版画</p>
-        <p class="collection-description">1896年作品，描绘基督教圣徒克里斯托弗背负幼年耶稣过河的传说场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">圣克里斯托弗是中世纪和文艺复兴时期常见的艺术题材，此作延续了这一传统，以生动的形象表现了这一宗教传说。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">圣克里斯托弗传统上被认为是旅行者的保护圣徒，相关艺术作品在西方具有广泛的受众基础。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥40,000 - ¥62,000</span>
-        </div>
-    </div>
-</div>
-
-
-
-                <!-- 神话作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1730_Picart_西绪福斯与滚石.jpg" alt="Picart版画《西绪福斯与滚石》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">西绪福斯与滚石</h3>
-                        <p class="collection-author">作者：Bernard Picart</p>
-                        <p class="collection-description">1730年铜版画，源自《NEU ERŐFNETER MUSEN TEMPEL》版画集，帘纹手工纸约45.5x31cm。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">Picart是18世纪欧洲著名版画家，其作品以古典题材和精湛的铜版技法著称，此作完美呈现了希腊神话的悲剧色彩。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">18世纪原版铜版画存世稀少，且此作为大型帘纹手工纸印刷，品相良好，具有极高的收藏价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥120,000 - ¥180,000</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- 宗教题材版画将在这里动态生成 -->
             </div>
         </section>
         
-		
-		
         <!-- 风景建筑主题 -->
         <section id="landscape" class="theme-section">
             <h2 class="theme-title"><i class="fas fa-mountain"></i>风景与建筑题材</h2>
             <div class="collection-grid">
-                <!-- 巴黎建筑 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1883_巴黎老城.jpg" alt="阿尔弗雷德·布鲁内-德班《巴黎老城-巴黎圣母院》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">巴黎老城-巴黎圣母院</h3>
-                        <p class="collection-author">作者：阿尔弗雷德·布鲁内-德班</p>
-                        <p class="collection-description">1883年原创蚀刻版画，描绘19世纪末巴黎圣母院及周边街景，具有浓厚的历史气息。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">19世纪巴黎城市景观版画记录了巴黎城市变迁，具有重要的历史文献价值。此作技法精湛，细节丰富。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">巴黎圣母院在2019年火灾后，相关历史图像更显珍贵。此作为原版蚀刻版画，具有特殊的纪念意义。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥45,000 - ¥70,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 意大利风景 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1812_维苏威火山下的庞贝古城.jpg" alt="Pieter van Bloemen《维苏威火山下的庞贝古城》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">维苏威火山下的庞贝古城</h3>
-                        <p class="collection-author">作者：Pieter van Bloemen</p>
-                        <p class="collection-description">1812年"拿破仑(卢浮宫)博物馆藏画"系列铜版画，描绘庞贝古城与维苏威火山的壮丽景象。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">拿破仑博物馆藏画系列是19世纪初法国重要的文化工程，旨在通过版画传播卢浮宫收藏的名作。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">此系列版画制作精良，存世量有限，且主题为庞贝古城这一历史遗迹，具有双重收藏价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥85,000 - ¥130,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-				
-<!-- 布达佩斯大剧院 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/布达佩斯大剧院.jpg" alt="版画《布达佩斯大剧院》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">布达佩斯大剧院</h3>
-        <p class="collection-author">建筑题材版画</p>
-        <p class="collection-description">描绘布达佩斯著名的大剧院建筑，展现了19世纪欧洲剧院建筑的宏伟与精美细节。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以精确的透视和细腻的线条展现了欧洲剧院建筑的典型特征，是建筑版画的优秀范例。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">建筑题材版画记录了历史建筑的原貌，具有建筑史和艺术史的双重价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥38,000 - ¥58,000</span>
-        </div>
-    </div>
-</div>
-
-
-<!-- 夕阳下的台伯河 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1812_夕阳下的台伯河.jpg" alt="韦尔内版画《夕阳下的台伯河》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">夕阳下的台伯河</h3>
-        <p class="collection-author">作者：克洛德·约瑟夫·韦尔内</p>
-        <p class="collection-description">1812年"拿破仑(卢浮宫)博物馆藏画"系列铜版画，尺寸26x17cm，描绘罗马台伯河的黄昏景色。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">韦尔内是18世纪法国著名的风景画家，此作以其对光线和氛围的精妙处理展现了台伯河的宁静之美。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">拿破仑博物馆藏画系列具有重要的历史价值，此作是其中描绘意大利风景的代表作。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥78,000 - ¥115,000</span>
-        </div>
-    </div>
-</div>
-
-
-<!-- 意大利港口 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1840_洛兰_意大利港口.jpg" alt="洛兰版画《意大利港口》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">意大利港口</h3>
-        <p class="collection-author">作者：克洛德·洛兰</p>
-        <p class="collection-description">1840年钢版画，雕刻凹版《意大利港口》，源自法国画家克洛德·洛兰作品，描绘理想化的海港景色。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">洛兰是古典主义风景画的代表，其作品以理想化的自然景色和精妙的光线处理著称，影响了后世风景画发展。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">19世纪中叶的钢版画技术能够精细再现洛兰原作的微妙光影，是收藏洛兰作品的重要版本。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥65,000 - ¥95,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 雷雨相间的迪唐娜安娜别墅 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_阿亨巴赫_迪唐娜安娜别墅.jpg" alt="阿亨巴赫版画《迪唐娜安娜别墅》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">雷雨相间的迪唐娜安娜别墅</h3>
-        <p class="collection-author">作者：奥斯瓦尔德·阿亨巴赫</p>
-        <p class="collection-description">1889年蚀刻版画，尺寸23.3*31厘米，出自德国画家奥斯瓦尔德·阿亨巴赫油画作品，雕刻师Fritz Krostewitz。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">阿亨巴赫是杜塞尔多夫画派的代表，其作品以戏剧性的光线和气氛著称，此作完美呈现了雷雨将至的紧张氛围。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">此作描绘了意大利那不勒斯的著名历史建筑迪唐娜安娜别墅，兼具建筑和风景双重价值。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥58,000 - ¥85,000</span>
-        </div>
-    </div>
-</div>
-
-
-
-                <!-- 柯罗风景作品 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1891_柯罗_池塘.jpg" alt="柯罗版画《池塘》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">池塘</h3>
-                        <p class="collection-author">作者：卡米尔·柯罗</p>
-                        <p class="collection-description">1891年照相版画，法国巴比松画派代表画家柯罗作品，尺寸28x22cm，展现宁静的自然风光。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">柯罗的风景画以诗意的氛围和微妙的光影变化著称，是巴比松画派向印象派过渡的重要桥梁。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">19世纪末的照相版画技术能够高度还原原作细节，是收藏柯罗作品的重要版本。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥55,000 - ¥85,000</span>
-                        </div>
-                    </div>
-                </div>
-				
-				
-				
-<!-- 跳舞的仙女 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1891_柯罗_跳舞的仙女.jpg" alt="柯罗版画《跳舞的仙女》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">跳舞的仙女</h3>
-        <p class="collection-author">作者：卡米尔·柯罗</p>
-        <p class="collection-description">1891年照相版画，尺寸28x22cm，法国巴比松画派画家柯罗作品，描绘林间仙女舞蹈的梦幻场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">柯罗晚期作品中常出现仙女、神话人物，此作结合了其标志性的风景技法与神话主题，展现了浪漫的想象力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">柯罗的神话题材作品相对其风景画较为少见，此作是其艺术风格多样性的体现。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥60,000 - ¥88,000</span>
-        </div>
-    </div>
-</div>
+                <!-- 风景建筑版画将在这里动态生成 -->
             </div>
         </section>
         
@@ -983,328 +1419,83 @@
         <section id="literary" class="theme-section">
             <h2 class="theme-title"><i class="fas fa-book-open"></i>文学与史诗题材</h2>
             <div class="collection-grid">
-                <!-- 多雷文学题材 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1870_多雷_但丁、维吉尔和乌提卡的卡托.jpg" alt="多雷版画《但丁、维吉尔和乌提卡的卡托》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">但丁、维吉尔和乌提卡的卡托</h3>
-                        <p class="collection-author">作者：古斯塔夫·多雷</p>
-                        <p class="collection-description">19世纪木版画，多雷为但丁《神曲》创作的插图系列之一，展现地狱篇中的经典场景。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">多雷的《神曲》插图是文学插图史上的里程碑，将但丁的文字视觉化，影响了后世对《神曲》的理解和想象。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">多雷的文学插图系列广受收藏家青睐，完整系列尤为珍贵，单幅作品也具有很高的收藏价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥70,000 - ¥105,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 多雷月球旅行 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1870_多雷_A VOYAGE TO THE MOON.jpg" alt="多雷版画《A VOYAGE TO THE MOON》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">去月球</h3>
-                        <p class="collection-author">作者：古斯塔夫·多雷</p>
-                        <p class="collection-description">1870年木版画，多雷科幻题材作品，纸张36.5*27.5cm，包含文字护纸页。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">此作展现了多雷对科幻题材的想象力，是19世纪科幻视觉艺术的重要代表，融合了浪漫主义与科学幻想。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">多雷的科幻题材作品相对较少，且此作包含原始文字护纸页，完整性好，收藏价值较高。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥80,000 - ¥120,000</span>
-                        </div>
-                    </div>
-                </div>
-         
-		 
-				
-				
-<!-- 分割的马匹 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1880_多雷_分列的马匹.jpg" alt="多雷版画《分裂的马匹》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">分裂的马匹</h3>
-        <p class="collection-author">作者：古斯塔夫·多雷</p>
-        <p class="collection-description">1880年木刻版画，"多雷画廊"系列作品，尺寸32x25cm，描绘动态中的马匹形象。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">多雷以其标志性的动感线条和光影对比，生动捕捉了马匹的力量与美感，是其动物题材的杰作。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">"多雷画廊"系列是其晚期的代表性作品集，此作展现了多雷对动物形态的深刻理解。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥75,000 - ¥110,000</span>
-        </div>
-    </div>
-</div>
-
-
-<!-- 唐璜之筏 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_德拉克洛瓦_唐璜之筏.jpg" alt="德拉克洛瓦版画《唐璜之筏》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">唐璜之筏</h3>
-        <p class="collection-author">作者：欧仁·德拉克洛瓦</p>
-        <p class="collection-description">1889年木刻版画，尺寸30x21cm，法国浪漫主义画派代表德拉克洛瓦作品，描绘文学人物唐璜的故事场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以德拉克洛瓦标志性的动态构图和戏剧性光线，展现了拜伦诗中唐璜故事的浪漫与冒险精神。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">文学题材在德拉克洛瓦作品中占有重要地位，此作连接了绘画与诗歌两大艺术形式。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥75,000 - ¥110,000</span>
-        </div>
-    </div>
-</div>
-
-         
+                <!-- 文学史诗版画将在这里动态生成 -->
             </div>
         </section>
         
-		
-		        <!-- 战争主题 -->
+        <!-- 战争主题 -->
         <section id="war" class="theme-section">
-            <h2 class="theme-title"><i class="fas fa-book-open"></i>战争题材</h2>
+            <h2 class="theme-title"><i class="fas fa-shield-alt"></i>战争题材</h2>
             <div class="collection-grid">
-			
-<!-- 保卫克里希镇 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_韦尔内_保卫克里希镇.jpg" alt="韦尔内版画《保卫克里希镇》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">保卫克里希镇</h3>
-        <p class="collection-author">作者：霍勒斯·韦尔内</p>
-        <p class="collection-description">1889年木版画，尺寸30x21cm，法国画家霍勒斯·韦尔内作品，描绘军事防御场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">霍勒斯·韦尔内是19世纪法国著名的军事画家，其作品以精确的细节和生动的战斗场景著称。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">此作主题反映了19世纪法国的军事历史，对于收藏军事题材版画的藏家具有特殊吸引力。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥50,000 - ¥75,000</span>
-        </div>
-    </div>
-</div>
-			
-			
-<!-- 鸦片战争 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1843_阿罗姆_鸦片战争.jpg" alt="阿罗姆版画《鸦片战争》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">鸦片战争</h3>
-        <p class="collection-author">作者：阿罗姆</p>
-        <p class="collection-description">1843年版，晚清古董版画，欧洲古董商阿罗姆作品，描绘鸦片战争时期虎门场景，中西文化交流的重要见证。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作以西方版画技法描绘中国历史事件，是19世纪中西视觉文化交流的珍贵实物，具有独特的历史文献价值。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">鸦片战争题材的西方版画存世稀少，此作记录了关键历史时刻，对中外收藏家都具有特殊吸引力。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥120,000 - ¥180,000</span>
-        </div>
-    </div>
-</div>
-			
-			</div>
+                <!-- 战争题材版画将在这里动态生成 -->
+            </div>
         </section>
-			
-			
-			
-			
-		        <!-- 世俗生活主题 -->
+        
+		<!-- 历史主题 -->
+        <section id="history" class="theme-section">
+            <h2 class="theme-title"><i class="fas fa-users"></i>历史题材</h2>
+            <div class="collection-grid">
+                <!-- 历史一瞬版画将在这里动态生成 -->
+            </div>
+        </section>
+		
+        <!-- 世俗生活主题 -->
         <section id="dailylife" class="theme-section">
-            <h2 class="theme-title"><i class="fas fa-book-open"></i>世俗生活题材</h2>
+            <h2 class="theme-title"><i class="fas fa-users"></i>世俗生活题材</h2>
             <div class="collection-grid">
-			       <!-- 圣诞花车巡游 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1986_斯通_盛大的圣诞花车巡游.jpg" alt="斯通版画《盛大的圣诞花车巡游》">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">盛大的圣诞花车巡游</h3>
-                        <p class="collection-author">作者：马库斯·克莱顿·斯通</p>
-                        <p class="collection-description">1895年大幅精品套色木刻版画，描绘伦敦皮卡迪利街圣诞花车巡游的热闹场景。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">斯通以描绘维多利亚时代社会生活场景著称，作品充满细节和时代气息，是19世纪英国风俗画的代表。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">大幅套色木刻版画制作工艺复杂，存世量少，且此作主题具有节日氛围，深受收藏家喜爱。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥95,000 - ¥140,000</span>
-                        </div>
-                    </div>
-                </div>
-				
-				
-				
-<!-- 夜生活 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1889_德拉克洛瓦_夜生活.jpg" alt="德拉克洛瓦版画《夜生活》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">夜生活</h3>
-        <p class="collection-author">作者：欧仁·德拉克洛瓦</p>
-        <p class="collection-description">1889年木刻版画，尺寸30x21cm，法国浪漫主义画派代表德拉克洛瓦作品，描绘夜间社交场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">德拉克洛瓦是浪漫主义绘画的旗手，其作品以强烈的情感表达和丰富的色彩著称，此作体现了浪漫主义对世俗生活的关注。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">德拉克洛瓦的版画作品相对油画较少，此作主题独特，展现了其艺术风格的另一方面。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥72,000 - ¥105,000</span>
-        </div>
-    </div>
-</div>
-
-				<!-- Mannliches Bildnifs（凡戴克肖像） -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1876_凡戴克_Mannliches Bildnifs.jpg" alt="凡戴克肖像版画">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">Mannliches Bildnifs（男性肖像）</h3>
-        <p class="collection-author">作者：凡戴克</p>
-        <p class="collection-description">1876年德国艺术家威廉·昂格蚀刻铜版画，源自佛兰德斯画家凡戴克的肖像作品。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">凡戴克是巴洛克时期最杰出的肖像画家之一，其作品以优雅的人物姿态和细腻的心理刻画著称。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">威廉·昂格的蚀刻技术精湛，此作很好地再现了凡戴克原作的贵族气质和细腻笔触。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥52,000 - ¥78,000</span>
-        </div>
-    </div>
-</div>
-		
-
-
-<!-- 家庭（阿德里安） -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1891_阿德里安_家庭.jpg" alt="阿德里安版画《家庭》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">家庭</h3>
-        <p class="collection-author">作者：阿德里安</p>
-        <p class="collection-description">19世纪照相腐蚀凹版铜版画，荷兰黄金时代画家阿德里安作品，描绘温馨家庭日常生活场景。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">阿德里安是荷兰黄金时代的风俗画家，其作品以细腻的室内场景和温馨的家庭氛围著称，体现了荷兰画派的典型特征。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">19世纪的照相腐蚀凹版技术能够高度还原原作的细节和色调，是收藏荷兰黄金时代作品的重要方式。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥55,000 - ¥82,000</span>
-        </div>
-    </div>
-</div>
-
-<!-- 准备春季花卉上市 -->
-<div class="collection-item">
-    <div class="collection-img">
-        <img src="picture/1891_准备春季花卉上市.jpg" alt="版画《准备春季花卉上市》">
-    </div>
-    <div class="collection-content">
-        <h3 class="collection-title">准备春季花卉上市</h3>
-        <p class="collection-author">作者：英国画意摄影师</p>
-        <p class="collection-description">19世纪手工上色木刻版画，描绘花商准备春季花卉上市的场景，色彩鲜艳，生活气息浓厚。</p>
-        <div class="value-section">
-            <p class="value-title">艺术价值：</p>
-            <p class="value-content">此作体现了19世纪英国画意摄影对版画的影响，结合了摄影的精确性和绘画的艺术性，手工上色更增添了独特魅力。</p>
-            <p class="value-title">收藏价值：</p>
-            <p class="value-content">手工上色版画每幅都有细微差异，具有独特性，且花卉主题深受收藏家喜爱。</p>
-            <p class="value-title">市场价格预估：</p>
-            <span class="price-tag">¥42,000 - ¥65,000</span>
-        </div>
-    </div>
-</div>
-		
-			
-			</div>
+                <!-- 世俗生活版画将在这里动态生成 -->
+            </div>
         </section>
-			
-			
-			
-			
+		
+		
+        
         <!-- 版画书籍主题 -->
         <section id="books" class="theme-section">
             <h2 class="theme-title"><i class="fas fa-book"></i>版画书籍与合集</h2>
             <div class="collection-grid">
-                <!-- 伦勃朗版画集 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1911_伦勃朗版画书.jpg" alt="伦勃朗版画集">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">伦勃朗版画集</h3>
-                        <p class="collection-author">作者：伦勃朗</p>
-                        <p class="collection-description">1911年德国原版《REMBRANDTS RADIERUNGEN》，收录伦勃朗397幅版画，有轻微瑕疵。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">此画册系统收录了伦勃朗的版画作品，是研究伦勃朗版画艺术的重要文献，具有极高的学术价值。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">20世纪初的德国艺术出版品以高质量著称，此画册虽略有瑕疵，但完整性好，收录作品全面。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥180,000 - ¥260,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 丢勒版画集 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1911_丢勒版画书.jpg" alt="丢勒版画集">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">丢勒版画集</h3>
-                        <p class="collection-author">作者：丢勒</p>
-                        <p class="collection-description">1911年罕见烫金本《伟大的雕刻家：阿尔布雷特·丢勒》，William Heinemann出版。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">此书系统收录了丢勒的代表性版画作品，是研究文艺复兴时期版画艺术的重要参考资料。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">烫金精装本较为罕见，且由著名出版商William Heinemann出版，具有较高的版本价值。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥160,000 - ¥230,000</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 珂勒惠支版画选集 -->
-                <div class="collection-item">
-                    <div class="collection-img">
-                        <img src="picture/1935_鲁迅_珂勒惠支版画书.jpg" alt="凯绥·珂勒惠支版画选集">
-                    </div>
-                    <div class="collection-content">
-                        <h3 class="collection-title">凯绥·珂勒惠支版画选集</h3>
-                        <p class="collection-author">作者：凯绥·珂勒惠支</p>
-                        <p class="collection-description">1935年线装特大开本，鲁迅编选，上海三闲书屋印造，限量第72本，极具历史价值。</p>
-                        <div class="value-section">
-                            <p class="value-title">艺术价值：</p>
-                            <p class="value-content">珂勒惠支是20世纪最具影响力的女版画家，其作品充满社会关怀和力量感。鲁迅是中国引进珂勒惠支艺术的第一人。</p>
-                            <p class="value-title">收藏价值：</p>
-                            <p class="value-content">此书是中外文化交流的重要见证，鲁迅编选的版本存世稀少，限量编号本尤为珍贵。</p>
-                            <p class="value-title">市场价格预估：</p>
-                            <span class="price-tag">¥220,000 - ¥350,000</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- 版画书籍将在这里动态生成 -->
             </div>
         </section>
     </main>
+    
+    <!-- 图片模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-info">
+            <h3 class="modal-title" id="modalTitle">作品标题</h3>
+            <p class="modal-author" id="modalAuthor">作者：</p>
+            <p class="modal-description" id="modalDescription">作品描述...</p>
+        </div>
+        <img class="modal-content" id="modalImage" src="" alt="">
+        <div class="magnifier" id="magnifier">
+            <img src="" alt="" class="magnifier-img" id="magnifierImg">
+        </div>
+        <div class="modal-controls">
+            <button class="modal-btn" id="zoomIn"><i class="fas fa-search-plus"></i></button>
+            <button class="modal-btn" id="zoomOut"><i class="fas fa-search-minus"></i></button>
+            <button class="modal-btn" id="resetZoom"><i class="fas fa-sync-alt"></i></button>
+            <button class="modal-btn" id="toggleMagnifier"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    
+    <!-- 视频模态框 -->
+    <div id="videoModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-info">
+            <h3 class="modal-title" id="videoModalTitle">作品标题</h3>
+            <p class="modal-author" id="videoModalAuthor">作者：</p>
+            <p class="modal-description" id="videoModalDescription">作品描述...</p>
+        </div>
+        <video class="modal-video" id="modalVideo" controls>
+            <source src="" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
+        <div class="video-controls">
+            <button class="modal-btn" id="playPauseVideo"><i class="fas fa-play"></i></button>
+            <button class="modal-btn" id="muteVideo"><i class="fas fa-volume-up"></i></button>
+            <button class="modal-btn" id="fullscreenVideo"><i class="fas fa-expand"></i></button>
+        </div>
+    </div>
     
     <!-- 页脚区域 -->
     <footer id="contact">
@@ -1312,70 +1503,1518 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>页间拾贝版画收藏馆</h3>
-                    <p>致力于收藏、研究和展示16-20世纪经典版画艺术作品，推广版画艺术文化。</p>
+                    <p>致力于收藏、研究和展示16-20世纪经典版画艺术作品。</p>
                     <p>线上藏馆</p>
                 </div>
                 <div class="footer-section">
                     <h3>联系我们</h3>
-                    <p>电话：+86 152 1668 9673</p>
                     <p>邮箱：dictionarzicefox@gmail.com</p>
                 </div>
-                <div class="footer-section">
+
             </div>
             <div class="copyright">
                 <p>© 2026 页间拾贝版画收藏馆 版权所有 | 本网站展示藏品仅供欣赏，部分为馆藏非卖品</p>
                 <p>市场价格预估仅为参考，实际交易价格可能因品相、市场供需等因素有所浮动</p>
+                <p>部分藏品提供视频展示，请确保网络连接正常</p>
             </div>
         </div>
     </footer>
     
     <script>
-        // 平滑滚动导航
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', e => {
-                e.preventDefault();
-                const targetId = item.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                // 更新活动导航项
-                document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                item.classList.add('active');
-                
-                // 滚动到目标位置
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // 根据滚动位置更新活动导航项
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            let currentSectionId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    currentSectionId = '#' + section.getAttribute('id');
+        // 版画数据 - 从Excel中提取的所有版画数据，包含视频示例
+    const printsData = [
+    {
+        name: "伦勃朗版画集",
+        author: "伦勃朗",
+        description: "这本1911年德国原版《伦勃朗版画集》收录了397幅伦勃朗的蚀刻版画，是研究西方版画史的重要文献。伦勃朗的版画以深刻的心理学洞察、戏剧性的明暗对比和自由的线条著称，展现了从肖像到宗教场景的广泛题材。此版本本身作为20世纪初的印刷品，兼具艺术文献价值和历史版本价值。",
+        type: "版画书",
+        image: "picture/1911_伦勃朗版画书.jpg",
+        tags: ["伦勃朗", "版画书", "德国原版", "20世纪"],
+        year: "1911",
+        theme: "books",
+        technique: "版画书",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "日落",
+        author: "柯罗",
+        description: "此1875年蚀刻铜版画完美再现了巴比松画派大师柯罗笔下的诗意风景。作品捕捉了黄昏时分自然的光色变幻，树木轮廓与柔和天际交融，体现了柯罗面向自然的艺术理念。由版画家Théophile Chauvel精心雕刻，使用ARCHES专业版画纸，且有大英博物馆收藏记录，兼具艺术美感与历史文献价值。",
+        type: "版画",
+        image: "picture/1875_柯罗_日落.jpg",
+        tags: ["柯罗", "蚀刻铜版画", "风景", "巴比松画派", "19世纪"],
+        year: "1875",
+        theme: "master",
+        technique: "蚀刻版画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "维苏威火山下的庞贝古城",
+        author: "Pieter van Bloemen",
+        description: "1812年拿破仑博物馆藏画系列铜版画，展现了浪漫主义时期对古典遗迹的想象。画面中维苏威火山的压迫感与庞贝古城的废墟形成强烈对比，体现了自然力量与人类文明关系的永恒主题。此系列是拿破仑时期重要的文化工程，具有特殊的历史意义。",
+        type: "版画",
+        image: "picture/1812_维苏威火山下的庞贝古城.mp4",
+        tags: ["风景", "建筑", "铜版画", "拿破仑博物馆", "19世纪"],
+        year: "1812",
+        theme: "landscape",
+        technique: "铜版画",
+        price: "标准收藏级",
+        mediaType: "video"
+    },
+    {
+        name: "夕阳下的台伯河",
+        author: "克洛德·约瑟夫·韦尔内（Claude Joseph Vernet）",
+        description: "同为1812年拿破仑博物馆系列，展现了韦尔内典型的理想化风景风格。画面构图平衡，光影处理细腻，将古罗马的台伯河畔描绘得如诗如画。铜版雕刻技术精湛，完美传达了原作的浪漫主义情怀和对古典美的追求。",
+        type: "版画",
+        image: "picture/1812_夕阳下的台伯河.jpg",
+        tags: ["风景", "铜版画", "韦尔内", "意大利", "19世纪"],
+        year: "1812",
+        theme: "landscape",
+        technique: "铜版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "巴黎老城-巴黎圣母院 OLD PARIS-NOTRE DAME",
+        author: "阿尔弗雷德·布鲁内-德班",
+        description: "1883年原创蚀刻版画，属于老巴黎怀旧系列。在巴黎经历现代化改造的背景下，艺术家以细腻的笔触记录了巴黎圣母院周边的古老街景。作品不仅是对哥特建筑的艺术再现，更是对即将消失的城市记忆的珍贵保存，具有历史文献价值。",
+        type: "版画",
+        image: "picture/1883_巴黎老城.jpg",
+        tags: ["建筑", "蚀刻版画", "巴黎", "城市景观", "19世纪"],
+        year: "1883",
+        theme: "landscape",
+        technique: "蚀刻版画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "家庭",
+        author: "伦勃朗",
+        description: "1876年德国艺术家威廉·昂格根据伦勃朗原作雕刻的蚀刻铜版画。作品展现了伦勃朗对家庭温情时刻的捕捉能力，人物表情生动自然，明暗处理富有层次。虽为后人复刻，但技艺精湛，是传播伦勃朗艺术的重要媒介。",
+        type: "版画",
+        image: "picture/1876_伦勃朗_家庭.jpg",
+        tags: ["伦勃朗", "蚀刻铜版画", "家庭", "人物", "19世纪"],
+        year: "1876",
+        theme: "master",
+        technique: "蚀刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "意大利港口",
+        author: "克洛德·洛兰",
+        description: "1840年钢版画，复刻了法国古典主义风景大师克洛德·洛兰的作品。洛兰擅长描绘理想化的海港景色，画面中建筑与自然光线和谐统一，创造出宁静而崇高的意境。钢版画精细的线条完美再现了原作的细节与氛围。",
+        type: "版画",
+        image: "picture/1840_洛兰_意大利港口.jpg",
+        tags: ["洛兰", "钢版画", "风景", "海港", "19世纪"],
+        year: "1840",
+        theme: "landscape",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "A VOYAGE TO THE MOON",
+        author: "古斯塔夫·多雷",
+        description: "1870年多雷木口木刻版画，展现了这位插图大师非凡的想象力。画面构图充满动感和奇幻色彩，将文学叙事转化为强烈的视觉图像。多雷的木刻技术登峰造极，黑白对比强烈，细节丰富，是19世纪插图艺术的典范。",
+        type: "版画",
+        image: "picture/1870_多雷_A VOYAGE TO THE MOON.jpg",
+        tags: ["多雷", "木版画", "科幻", "文学", "19世纪"],
+        year: "1870",
+        theme: "literary",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "雷雨相间的迪唐娜安娜别墅",
+        author: "奥斯瓦尔德·阿亨巴赫",
+        description: "1889年蚀刻版画，源自德国画家阿亨巴赫的油画作品。画面捕捉了暴风雨来临前意大利别墅的戏剧性场景，天空的光影变化与建筑的坚实形成对比。蚀刻技法很好地表现了景深和氛围，是19世纪风景版画的精品。",
+        type: "版画",
+        image: "picture/1889_阿亨巴赫_迪唐娜安娜别墅.jpg",
+        tags: ["阿亨巴赫", "蚀刻版画", "风景", "建筑", "意大利", "19世纪"],
+        year: "1889",
+        theme: "landscape",
+        technique: "蚀刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "Mannliches Bildnifs",
+        author: "凡戴克",
+        description: "1876年威廉·昂格根据巴洛克肖像大师凡戴克作品复刻的蚀刻铜版画。凡戴克的肖像以优雅、高贵著称，此作品通过版画媒介再现了原作的精致与人物气质，是了解巴洛克肖像艺术传播的重要例证。",
+        type: "版画",
+        image: "picture/1876_凡戴克_Mannliches Bildnifs.jpg",
+        tags: ["凡戴克", "蚀刻铜版画", "肖像", "巴洛克", "19世纪"],
+        year: "1876",
+        theme: "dailylife",
+        technique: "蚀刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "盛大的圣诞花车巡游",
+        author: "马库斯·克莱顿·斯通",
+        description: "1895年大幅套色木刻版画，生动描绘了伦敦皮卡迪利街圣诞庆典的繁华景象。艺术家斯通以细腻的笔触刻画了众多人物和建筑细节，色彩丰富，氛围欢快，是19世纪末风俗版画的杰出代表，兼具艺术与历史记录价值。",
+        type: "版画",
+        image: "picture/1986_斯通_盛大的圣诞花车巡游.jpg",
+        tags: ["斯通", "套色木刻", "圣诞", "风俗", "伦敦", "19世纪"],
+        year: "1895",
+        theme: "dailylife",
+        technique: "套色木刻",
+        price: "装饰级",
+        mediaType: "image"
+    },
+
+    {
+        name: "浪子回头",
+        author: "古斯塔夫·多雷",
+        description: "多雷《圣经》插图中的经典之作，描绘了《路加福音》中著名的寓言故事。画面焦点集中在父子相拥的感人瞬间，周围人物的反应丰富了叙事层次。多雷对人物情感和光影的把握，使这一宗教主题充满了普世的人文关怀。",
+        type: "版画",
+        image: "picture/1870_多雷_浪子回头.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "西奈山立法",
+        author: "古斯塔夫·多雷",
+        description: "多雷笔下最具震撼力的宗教场景之一，描绘了摩西在西奈山接受上帝律法的神圣时刻。画面中神圣的光辉、嶙峋的山石与敬畏的以色列人形成强烈对比，创造出一种崇高而威严的视觉体验，体现了多雷对神圣主题的独特诠释。",
+        type: "版画",
+        image: "picture/1870_多雷_西奈山立法.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "雅克赴埃及",
+        author: "古斯塔夫·多雷",
+        description: "多雷《圣经》插图系列作品，描绘了雅各带领家族前往埃及的场景。画面队伍行进感强，人物众多但组织有序，背景的风景处理展现出多雷在叙事性构图和空间营造上的高超技巧。",
+        type: "版画",
+        image: "picture/1870_多雷_雅克赴埃及.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "尼罗河上的摩西",
+        author: "古斯塔夫·多雷",
+        description: "描绘了婴儿摩西被放入尼罗河芦苇丛中的关键场景。多雷将这一充满命运感的时刻处理得既温情又庄严，埃及公主发现摩西的戏剧性瞬间被永恒定格。画面中对尼罗河沿岸风光的描绘也颇具特色。",
+        type: "版画",
+        image: "picture/1870_多雷_尼罗河上的摩西.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "参孙之死",
+        author: "古斯塔夫·多雷",
+        description: "多雷《圣经》插图中最具动感和暴力美学的作品之一，描绘了参孙推倒神庙柱子的最后时刻。画面充满了张力与破坏力，人物的肌肉线条、倒塌的建筑结构和混乱的人群构成了一个悲壮的视觉高潮。",
+        type: "版画",
+        image: "picture/1870_多雷_参孙之死.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "耶稣之死",
+        author: "古斯塔夫·多雷",
+        description: "多雷对耶稣受难场景的诠释，焦点集中在十字架下的悲伤人群与昏暗的天色。画面情感深沉，通过光影的强烈对比和人物姿态的刻画，传达出这一宗教核心事件的悲剧性与神圣性。",
+        type: "版画",
+        image: "picture/1870_多雷_耶稣之死.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "耶稣平息风浪",
+        author: "古斯塔夫·多雷",
+        description: "描绘了耶稣在风暴中显神迹的场景。多雷通过狂暴的海浪、倾斜的小船与惊恐的门徒，反衬出耶稣的平静与权威。画面动态十足，黑白对比强烈，展现了自然力量与神圣力量之间的戏剧性冲突。",
+        type: "版画",
+        image: "picture/1870_多雷_耶稣平息风浪.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "但丁、维吉尔和乌提卡的卡托",
+        author: "古斯塔夫·多雷",
+        description: "多雷为但丁《神曲·炼狱篇》创作的插图。画面展现了但丁与维吉尔在炼狱山下遇见古罗马政治家卡托的场景。多雷以丰富的想象力和细腻的刻画，将文学中的人物和超自然景观具象化，营造出庄严而神秘的氛围。",
+        type: "版画",
+        image: "picture/1870_多雷_但丁、维吉尔和乌提卡的卡托.jpg",
+        tags: ["多雷", "木版画", "文学", "但丁", "神曲", "19世纪"],
+        year: "1870",
+        theme: "literary",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "丢勒版画集",
+        author: "丢勒",
+        description: "1911年出版的烫金本丢勒版画集，系统收录了这位北方文艺复兴巨匠的版画作品。丢勒将科学的精确性与艺术的想象力结合，其木刻和铜版画在技法与表现力上均达到前所未有的高度。此烫金版本制作精良，是收藏和研究丢勒艺术的重要文献。",
+        type: "版画书",
+        image: "picture/1911_丢勒版画书.jpg",
+        tags: ["丢勒", "版画书", "烫金本", "文艺复兴", "20世纪"],
+        year: "1911",
+        theme: "books",
+        technique: "版画书",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "凯绥 珂勒惠支版画选集",
+        author: "凯绥 珂勒惠支",
+        description: "1935年由鲁迅编印、上海三闲书屋出版的线装特大开本珂勒惠支版画集，限量发行（此为第72本）。珂勒惠支是德国表现主义版画大师，作品充满社会关怀和强烈的情感力量。鲁迅将其引入中国，对中国现代版画艺术产生了深远影响。此书本身就是中国现代文化史和中外艺术交流的重要物证，具有极高的历史与艺术价值。",
+        type: "版画书",
+        image: "picture/1935_鲁迅_珂勒惠支版画书.jpg",
+        tags: ["珂勒惠支", "鲁迅", "版画书", "线装书", "限量", "20世纪"],
+        year: "1935",
+        theme: "books",
+        technique: "版画书",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "“虔诚者”被逐出教会",
+        author: "劳伦斯",
+        description: "1889年木刻版画，描绘了一个富有戏剧性的宗教冲突场景。法国学院派画家劳伦斯擅长处理历史与宗教题材，此作通过人物激烈的情感表达和严谨的构图，展现了信仰与制度之间的张力。木刻技法有力而肯定，增强了画面的叙事冲击力。",
+        type: "版画",
+        image: "picture/1889_劳伦斯_“虔诚者”被逐出教会.jpg",
+        tags: ["劳伦斯", "木刻版画", "宗教", "19世纪", "视频展示"],
+        year: "1889",
+        theme: "religious",
+        technique: "木刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "保卫克里希镇",
+        author: "霍勒斯·韦尔内",
+        description: "1889年木版画，出自法国军事画家霍勒斯·韦尔内。作品以生动的笔触描绘了法军保卫小镇的战斗场景，人物动态激烈，构图富有动感。韦尔内作为官方认可的战争记录者，其作品兼具艺术性与历史文献价值，是了解19世纪军事题材版画的范例。",
+        type: "版画",
+        image: "picture/1889_韦尔内_保卫克里希镇.jpg",
+        tags: ["韦尔内", "木版画", "军事", "战争", "法国", "19世纪"],
+        year: "1889",
+        theme: "war",
+        technique: "木版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "西绪福斯与滚石",
+        author: "Bernard Picart",
+        description: "1730年铜版画，源自欧洲著名版画家Bernard Picart的神话题材作品集。描绘了希腊神话中西绪福斯永无止境推石上山的惩罚场景。Picart的版画以线条精细、古典气息浓厚著称，此作完美体现了18世纪对古典神话的理性与优雅诠释，是巴洛克晚期版画的精品。",
+        type: "版画",
+        image: "picture/1730_Picart_西绪福斯与滚石.jpg",
+        tags: ["Picart", "铜版画", "神话", "希腊神话", "18世纪"],
+        year: "1730",
+        theme: "religious",
+        technique: "铜版画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "分裂的马匹",
+        author: "古斯塔夫·多雷",
+        description: "1880年多雷画廊系列木刻版画，展现了多雷描绘动物与动态场景的卓越能力。画面中受惊马匹的力量感与挣扎的动态被刻画得淋漓尽致，背景的混乱人群增强了戏剧效果。体现了多雷在叙事性插图之外的纯艺术造诣。",
+        type: "版画",
+        image: "picture/1880_多雷_分裂的马匹.jpg",
+        tags: ["多雷", "木刻版画", "动物", "马匹", "19世纪"],
+        year: "1880",
+        theme: "literary",
+        technique: "木刻版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "庇护七世和红衣主教",
+        author: "雅克路易大卫",
+        description: "1889年木版画，复刻了新古典主义巨匠雅克-路易·大卫的作品。画面描绘了教皇庇护七世与红衣主教会面的庄重场景，人物姿态威严，构图稳定，体现了大卫对古典形式与历史题材的严谨追求。版画忠实地传达了原作的宏伟气势。",
+        type: "版画",
+        image: "picture/1889_雅克路易大卫_庇护七世和红衣主教.jpg",
+        tags: ["大卫", "木版画", "宗教", "教皇", "19世纪"],
+        year: "1889",
+        theme: "religious",
+        technique: "木版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "夜生活",
+        author: "欧仁·德拉克洛瓦",
+        description: "1889年木刻版画，源自浪漫主义大师德拉克洛瓦的作品。德拉克洛瓦的作品以色彩和激情著称，此版画虽为单色，却通过强烈的明暗对比和富有表现力的线条，捕捉了夜间社交场景的生动与活力，展现了浪漫主义对情感和动态的推崇。",
+        type: "版画",
+        image: "picture/1889_德拉克洛瓦_夜生活.mp4",
+        tags: ["德拉克洛瓦", "木刻版画", "夜生活", "风俗", "浪漫主义", "19世纪", "视频展示"],
+        year: "1889",
+        theme: "dailylife",
+        technique: "木刻版画",
+        price: "标准收藏级",
+        mediaType: "video"
+    },
+    {
+        name: "唐璜之筏",
+        author: "欧仁·德拉克洛瓦",
+        description: "1889年木刻版画，取材自德拉克洛瓦基于拜伦诗作创作的主题。画面充满了浪漫主义的悲剧色彩和异国情调，描绘了唐璜海上遇难的戏剧性场景。人物姿态富有表现力，海浪的处理动感十足，是文学与视觉艺术结合的佳作。",
+        type: "版画",
+        image: "picture/1889_德拉克洛瓦_唐璜之筏.jpg",
+        tags: ["德拉克洛瓦", "木刻版画", "文学", "唐璜", "浪漫主义", "19世纪"],
+        year: "1889",
+        theme: "literary",
+        technique: "木刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "池塘",
+        author: "卡米尔·柯罗",
+        description: "1891年照相版画，忠实再现了柯罗笔下的典型风景。柯罗的风景充满朦胧的诗意和银灰色调，此作通过照相制版技术，精确捕捉了池塘边树木的倒影和宁静的氛围，是传播柯罗艺术理念的高质量复制品。",
+        type: "版画",
+        image: "picture/1891_柯罗_池塘.jpg",
+        tags: ["柯罗", "照相版画", "风景", "自然", "19世纪"],
+        year: "1891",
+        theme: "landscape",
+        technique: "照相版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "跳舞的仙女",
+        author: "卡米尔·柯罗",
+        description: "1891年照相版画，展示了柯罗作品中少有的神话题材。在柯罗标志性的朦胧森林背景中，仙女轻盈舞动，将现实风景与古典幻想巧妙结合。作品体现了19世纪艺术家对自然与神话关系的浪漫想象。",
+        type: "版画",
+        image: "picture/1891_柯罗_跳舞的仙女.jpg",
+        tags: ["柯罗", "照相版画", "神话", "仙女", "19世纪"],
+        year: "1891",
+        theme: "landscape",
+        technique: "照相版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "天有不测风云",
+        author: "伦勃朗",
+        description: "伦勃朗晚期蚀刻版画的代表作之一。作品以一位陷入沉思的老人形象，寓言式地表达了人生的无常与脆弱。伦勃朗运用极其自由、近乎速写式的蚀刻线条，结合丰富的明暗层次，赋予了人物深刻的心理深度和哲学意味，是其版画艺术中个人表达达到顶峰的体现。",
+        type: "版画",
+        image: "picture/1891_伦勃朗_天有不测风云.jpg",
+        tags: ["伦勃朗", "蚀刻版画", "人物", "荷兰黄金时代", "19世纪"],
+        year: "1891",
+        theme: "master",
+        technique: "蚀刻版画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "家庭",
+        author: "阿德里安",
+        description: "19世纪照相腐蚀凹版铜版画，复刻了荷兰黄金时代画家阿德里安的风俗画。作品描绘了温馨的家庭生活场景，细节丰富，光线柔和。照相腐蚀技术的运用使得画面层次细腻，忠实地还原了原作的油画质感，是19世纪版画复制技术的代表。",
+        type: "版画",
+        image: "picture/1891_阿德里安_家庭.jpg",
+        tags: ["阿德里安", "照相腐蚀凹版", "家庭", "风俗", "19世纪"],
+        year: "1891",
+        theme: "dailylife",
+        technique: "照相腐蚀凹版",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "准备春季花卉上市",
+        author: "annoymous",
+        description: "19世纪手工上色木刻版画，具有浓厚的维多利亚时期装饰风格。画面描绘了花市准备场景，色彩清新淡雅，细节精致。这种结合了版画与手工上色的形式，在摄影术普及前后尤为流行，兼具实用性与审美趣味。",
+        type: "版画",
+        image: "picture/1891_准备春季花卉上市.mp4",
+        tags: ["手工上色", "木刻版画", "花卉", "春季", "19世纪"],
+        year: "1891",
+        theme: "dailylife",
+        technique: "手工上色版画",
+        price: "标准收藏级",
+        mediaType: "video"
+    },
+    {
+        name: "俄耳甫斯迎接黎明",
+        author: "卡米耶·柯罗",
+        description: "大幅蚀刻干刻铜版画，限量版作品，展现了柯罗对古典神话题材的独特诠释。描绘了诗人俄耳甫斯迎接黎明的诗意场景，将人物融入其标志性的抒情风景之中。技法上结合了蚀刻的线条与干刻的柔和色调，艺术价值较高。",
+        type: "版画",
+        image: "picture/柯罗_俄耳甫斯迎接黎明.jpg",
+        tags: ["柯罗", "蚀刻干刻", "神话", "限量版", "浪漫主义", "19世纪"],
+        year: "1890",
+        theme: "master",
+        technique: "蚀刻版画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "布达佩斯大剧院",
+        author: "建筑题材版画",
+        description: "19世纪末的建筑题材版画，精细描绘了布达佩斯歌剧院的宏伟外观。这类版画常作为旅行纪念或建筑资料，体现了当时人们对欧洲城市地标建筑的欣赏与记录，具有历史地理和建筑艺术的双重价值。",
+        type: "版画",
+        image: "picture/布达佩斯大剧院.jpg",
+        tags: ["建筑", "剧院", "城市景观", "19世纪"],
+        year: "1890",
+        theme: "landscape",
+        technique: "版画",
+        price: "装饰级",
+        mediaType: "image"
+    },
+    {
+        name: "战争的悲惨",
+        author: "雅克.卡洛",
+        description: "1633年蚀刻版画，出自巴洛克时期法国版画大师雅克·卡洛的著名系列《战争的悲惨》。卡洛以冷静近乎残酷的笔触，描绘了三十年战争带来的破坏与平民的苦难，超越了单纯的战争记录，具有深刻的人文批判精神。其蚀刻技法复杂精细，是17世纪欧洲版画艺术的里程碑式作品。",
+        type: "版画",
+        image: "picture/1633_卡洛_战争的悲惨.mp4",
+        tags: ["卡洛", "蚀刻版画", "战争", "巴洛克", "17世纪"],
+        year: "1633",
+        theme: "war",
+        technique: "蚀刻版画",
+        price: "博物馆级",
+        mediaType: "video"
+    },
+    {
+        name: "鸦片战争",
+        author: "阿罗姆",
+        description: "1843年欧洲古董版画，记录了第一次鸦片战争中的虎门场景。由英国画家阿罗姆等人绘制，是西方观察和描绘近代中国的早期视觉资料之一。画面兼具新闻纪实性与东方想象，是研究中西交流史、战争史和图像传播史的重要实物。",
+        type: "版画",
+        image: "picture/1843_阿罗姆_鸦片战争.jpg",
+        tags: ["阿罗姆", "鸦片战争", "历史", "中西交流", "19世纪"],
+        year: "1843",
+        theme: "war",
+        technique: "版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "耶稣下葬",
+        author: "丢勒",
+        description: "1896年珂罗版印刷的丢勒作品《耶稣下葬》。珂罗版是一种能高度还原原作风貌的照相平版印刷术。此作忠实地再现了丢勒原版画中对这一宗教悲剧场景的深刻刻画，人物情感饱满，构图严谨，是欣赏和研究丢勒艺术的优质媒介。",
+        type: "版画",
+        image: "picture/1896_耶稣下葬.jpg",
+        tags: ["宗教", "珂罗版", "基督教", "19世纪"],
+        year: "1896",
+        theme: "religious",
+        technique: "珂罗版",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "圣克里斯托弗",
+        author: "宗教题材版画",
+        description: "1896年宗教题材版画，描绘了圣徒克里斯托弗背负幼年基督过河的传说故事。这一主题在中世纪和文艺复兴时期广泛流传，象征着重负与救赎。此版画延续了传统的图像学，制作精良，体现了19世纪末对古典宗教艺术的回望。",
+        type: "版画",
+        image: "picture/1896_圣克里斯托弗.jpg",
+        tags: ["宗教", "圣克里斯托弗", "圣徒", "19世纪"],
+        year: "1896",
+        theme: "religious",
+        technique: "版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+    {
+        name: "巴比伦军队的覆灭",
+        author: "古斯塔夫·多雷",
+        description: "1870年多雷《圣经》插图，描绘了巴比伦军队溃败的宏大场面。画面充满了动感与混乱，展示了多雷处理大规模战争场景的构图能力。强烈的光影对比和密集的线条组织，营造出令人窒息的悲剧氛围。",
+        type: "版画",
+        image: "picture/1870_多雷_巴比伦军队的覆灭.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "以赛亚关于巴比伦的预言",
+        author: "古斯塔夫·多雷",
+        description: "多雷通过象征性的画面诠释了先知以赛亚对巴比伦的预言。画面中倾倒的偶像、荒芜的宫殿与惊惶的人群，共同构成了一幅关于帝国衰落的寓言。多雷的想象力将文字预言转化为极具冲击力的视觉图像。",
+        type: "版画",
+        image: "picture/1870_多雷_以赛亚关于巴比伦的预言.jpg",
+        tags: ["多雷", "木版画", "宗教", "圣经", "19世纪"],
+        year: "1870",
+        theme: "religious",
+        technique: "木版画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "亚当与夏娃",
+        author: "丢勒",
+        description: "1896年珂罗版复刻的丢勒代表作《亚当与夏娃》。丢勒的这幅铜版画是文艺复兴时期对人体比例、解剖学和古典美研究的集大成之作，同时蕴含着深刻的基督教人文思想。珂罗版完美地再现了原作的每一个细节，是传播丢勒经典的重要版本。",
+        type: "版画",
+        image: "picture/1896_丢勒_亚当与夏娃.jpg",
+        tags: ["丢勒", "珂罗版", "宗教", "文艺复兴", "19世纪"],
+        year: "1896",
+        theme: "master",
+        technique: "珂罗版",
+        price: "典藏级",
+        mediaType: "image"
+    },
+    {
+        name: "威尼斯：叹息桥",
+        author: "透纳/J.C. Armytage 雕刻",
+        description: "此版画精准捕捉了英国浪漫主义大师透纳笔下的威尼斯精髓。画面以标志性的叹息桥为核心，薄雾轻笼石质结构，巧妙地将历史的厚重感与浪漫的忧伤情绪融为一体。水面反光与建筑轮廓的虚实对比，淋漓尽致地展现了透纳“空气透视”技法的精妙。作为威尼斯系列中最具代表性的作品之一，它既是对水城历史的诗意回望，也是浪漫主义“以情驭景”的典范。版画复刻技术代表了19世纪雕版艺术的最高水准。",
+        type: "版画",
+        image: "picture/威尼斯叹息桥.jpg",
+        tags: ["透纳", "威尼斯", "浪漫主义", "文艺复兴", "19世纪"],
+        year: "1863",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "威尼斯：大运河",
+        author: "透纳/T.A. Prior 雕刻",
+        description: "这幅版画展现了透纳对威尼斯大运河开阔全景的浪漫描绘。柔和的光线塑造出水面的粼粼反光，前景的贡多拉与背景的宫殿形成“日常烟火”与“历史繁华”的生动呼应。作品不仅是风景描绘，更充满了叙事性，是透纳威尼斯系列的核心之作。其官方复刻背景（源自弗农画廊授权）进一步提升了它的历史可靠性与艺术文献价值，是收藏19世纪浪漫主义风景版画的佳选。",
+        type: "版画",
+        image: "picture/威尼斯大运河.jpg",
+        tags: ["透纳", "威尼斯", "浪漫主义", "文艺复兴", "19世纪"],
+        year: "1863",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "威尼斯：从朱代卡运河望去",
+        author: "透纳/E. Brandard 雕刻",
+        description: "聚焦清晨薄雾中的水城，阳光在水面形成柔和光带，模糊了建筑与天空的边界，营造出梦幻般的诗意氛围。 透纳 “瞬间光影” 捕捉能力的极致体现，版画复刻精准还原了原作的朦胧质感；机构馆藏来源（商业图书馆）增添了传承价值。",
+        type: "版画",
+        image: "picture/威尼斯从朱代卡运河望去.jpg",
+        tags: ["透纳", "威尼斯", "浪漫主义", "文艺复兴", "19世纪"],
+        year: "1829",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "image"
+    },
+    {
+        name: "莱茵河畔的科隆",
+        author: "透纳/A. Willmore 雕刻",
+        description: "以莱茵河畔的科隆城为载体，用薄雾弱化建筑轮廓，传递出历史的厚重与宁静；前景的船夫与背景的大教堂形成人文与建筑的对话。",
+        type: "版画",
+        image: "picture/莱茵河畔的科隆.jpg",
+        tags: ["透纳", "科隆", "浪漫主义", "文艺复兴", "19世纪"],
+        year: "1829",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "image"
+    },	
+    {
+        name: "阿波罗与达芙妮在滕比河谷",
+        author: "透纳/E. Brandard 雕刻",
+        description: "将古典神话融入理想风景，用柔和光影与开阔地貌传递神性与诗意，人物与自然的融合尽显浪漫主义的抒情特质。透纳神话题材的稀缺作品，既是对古典精神的浪漫诠释，也是 “风景 + 叙事” 创作手法的典范；国家美术馆官方背景提升了其可信度。",
+        type: "版画",
+        image: "picture/阿波罗与达芙妮在滕比河谷.jpg",
+        tags: ["透纳", "神话", "浪漫主义", "文艺复兴", "19世纪"],
+        year: "1863",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "image"
+    },	
+    {
+        name: "Ancient Italy",
+        author: "透纳/J.T. Willmore 雕刻",
+        description: "画面中，清晨的薄雾笼罩着古老的意大利水城，阳光在水面上形成一道柔和的光带，模糊了建筑与天空的边界，营造出一种既真实又梦幻的诗意感。雕刻师 Willmore 用细腻的排线和渐变的墨色，精准还原了透纳标志性的 “空气透视” 效果，让观者能感受到湿润的空气和光线的流动。这幅作品不仅是风景，更是对古罗马文明的诗意回望。",
+        type: "版画",
+        image: "picture/古意大利.mp4",
+        tags: ["透纳", "古罗马", "洛兰", "浪漫主义", "19世纪"],
+        year: "1861",
+        theme: "landscape",
+        technique: "铜板画",
+        price: "博物馆级",
+        mediaType: "video"
+    },
+	{
+        name: "海边的求爱COURTSHIP BY THE SEA-SIDE",
+        author: "Charles Sillem Lidderdale/George Greatbach 雕刻",
+        description: "它是维多利亚时代钢版画的典型代表，采用手工雕刻凹印工艺，线条细腻、层次丰富，能精准还原原画的光影与人物情绪，是 19 世纪欧洲版画技艺的珍贵实物。作品描绘了海边渔民的日常与情感互动，不仅是一幅浪漫风俗画，也反映了当时英国沿海底层民众的生活状态，具有社会史与民俗学的双重价值。",
+        type: "版画",
+        image: "picture/海边的求爱.jpg",
+        tags: ["维多利亚", "英国", "乡村", "海岸", "19世纪"],
+        year: "1868",
+        theme: "dailylife",
+        technique: "钢板画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "马克沃斯城堡MACKWORTH CASTLE",
+        author: "Rowney & Sons",
+        description: "版画精准描绘了德比郡马克沃斯城堡仅存的门楼遗迹，以及周边的乡村民居，是研究 14 世纪英国城堡建筑与维多利亚时期乡村风貌的视觉史料。作品采用蚀刻版画工艺，以细腻的线条表现石材肌理与光影层次，属于当时流行的 “如画式”（Picturesque）风景风格，兼具艺术性与纪实性。出版方 Rowney & Sons 是英国历史最悠久的艺术材料与版画出版机构之一。",
+        type: "版画",
+        image: "picture/马克沃斯城堡.jpg",
+        tags: ["维多利亚", "英国", "乡村", "城堡", "蚀刻", "19世纪"],
+        year: "1890",
+        theme: "dailylife",
+        technique: "蚀刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "伊丽莎白女王签署苏格兰玛丽女王的死刑令",
+        author: "Alexander von Liezen-Mayer/Charles Butterworth 雕刻",
+        description: "作品描绘了英国历史上极具戏剧性的一刻 —— 伊丽莎白一世在权衡政治风险后，最终签署处死苏格兰玛丽女王的命令。你可以重点观察女王的肢体语言：她的手悬在文书上方，面部流露着犹豫与决绝的复杂情绪，这正是画家刻画的核心。雕刻师用细腻的钢版线条还原了原画的明暗层次：深色的天鹅绒礼服与华丽的蕾丝衣领形成质感对比，背景中古典柱式与帷幔的线条则烘托出宫廷的肃穆氛围，体现了维多利亚时期钢版画的精湛工艺。",
+        type: "版画",
+        image: "picture/伊丽莎白女王签署苏格兰玛丽女王的死刑令.mp4",
+        tags: ["维多利亚", "都铎时代", "伊丽莎白女王", "19世纪"],
+        year: "1880",
+        theme: "history",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "video"
+    },
+	{
+        name: "基督升天Himmelfahrt Christi",
+        author: "爱德华.冯.格布哈特Eduard von Gebhardt",
+        description: "作品描绘了《圣经》中基督升天的场景：基督立于云端，双臂张开，周身放射出神圣的光束；下方使徒们或仰望、或跪拜，神情中充满敬畏与不舍。你可以重点观察使徒们的肢体语言与面部表情，体会他们在目睹神迹时的复杂情绪。这幅作品采用蚀刻版画工艺，通过疏密变化的线条表现光影与质感：基督的衣袍用粗重的线条塑造体积感，背景的云层则用细腻的排线营造空灵氛围，使徒的衣褶与地面的纹理层次分明，体现了 19 世纪德国版画的精湛技艺。",
+        type: "版画",
+        image: "picture/基督升天.jpg",
+        tags: ["格布哈特", "圣经", "基督升天",'德国', "19世纪"],
+        year: "1890",
+        theme: "religious",
+        technique: "蚀刻版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "约翰.布朗被捕，1517 年于阿什福德被处以火刑",
+        author: "Alexander Johnston/J. and G.P. Nicholls 雕刻",
+        description: "作品描绘了 1517 年英国宗教改革前夕，罗拉德派（Lollard）信徒约翰.布朗被捕的场景。你可以重点观察人物的动态与情绪：约翰.布朗的妻子扑向他试图阻拦士兵，而布朗本人则带着平静的殉道者神态，周围围观者的复杂反应也刻画得十分细腻，充满戏剧张力。雕刻师用细腻的钢版线条还原了原画的明暗层次：士兵的盔甲、平民的衣袍与室内石质墙面的质感对比鲜明，背景的拱门与阴影则强化了场景的压抑氛围，体现了维多利亚时期钢版画的精湛工艺。这幅画诞生于 19 世纪英国宗教复兴与历史热的背景下，既记录了 16 世纪宗教迫害的残酷历史，也反映了维多利亚时代民众对宗教自由与历史记忆的反思，具有历史与思想的双重价值。",
+        type: "版画",
+        image: "picture/约翰布朗被捕.jpg",
+        tags: ["英国", "宗教改革", "维多利亚", "19世纪","苏格兰"],
+        year: "1890",
+        theme: "history",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "霍茨珀在霍米尔顿山战役后与亨利国王信使的会面",
+        author: "Alfred Elmore, R.A",
+        description: "这幅画精准还原了《亨利四世》中的经典场景：霍茨珀在战役大胜后，面对国王的信使态度傲慢，拒绝交出战俘。你可以重点观察霍茨珀的姿态 —— 他伸手指向信使，神态充满桀骜不驯；信使则在他的气势下显得局促，周围士兵的疲惫与兴奋也刻画得细腻入微，充满戏剧张力。雕刻师用疏密变化的线条表现出不同质感：士兵的盔甲、粗糙的树皮与荒凉的战场层次分明，背景的阴沉天空则强化了战后的压抑氛围，完整保留了原画的情绪张力。它不仅是莎士比亚戏剧的视觉演绎，也反映了 19 世纪英国社会对本国历史与文学经典的推崇。作品将文学情节转化为生动的视觉叙事，让观者能更直观地感受戏剧中的冲突与人物性格。",
+        type: "版画",
+        image: "picture/霍茨珀在霍米尔顿山战役后与亨利国王信使的会面.jpg",
+        tags: ["英国", "莎士比亚", "亨利四世", "19世纪"],
+        year: "1880",
+        theme: "literary",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "狮心王理查在沙吕兹临终前宽恕贝特朗.德.古尔东",
+        author: "John Cross/Butterworth and Heath 雕刻",
+        description: "这幅画还原了 1199 年狮心王理查临终前的经典场景：他在沙吕兹城堡的病榻上，宽恕了射中他的年轻弩手贝特朗・德・古尔东。你可以重点观察理查的神态 —— 他虚弱却带着王者的慈悲，而贝特朗则充满恐惧与愧疚，周围士兵的复杂反应也强化了场景的戏剧性。雕刻师用疏密变化的线条表现不同质感：粗糙的木构城堡墙面、厚重的盔甲与柔软的织物层次分明，阴影的运用则烘托出临终场景的肃穆氛围，完整保留了原画的情绪感染力。它不仅是英国中世纪传奇君主的视觉记录，也反映了 19 世纪英国社会对 “骑士精神” 与 “王者气度” 的推崇，将历史事件转化为兼具叙事性与道德感的视觉作品。",
+        type: "版画",
+        image: "picture/狮心王理查在沙吕兹临终前宽恕贝特朗德古尔东.jpg",
+        tags: ["英国", "狮心王理查", "中世纪复兴", "骑士精神","19世纪"],
+        year: "1880",
+        theme: "history",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "克努特大帝在尼恩河上聆听伊利大教堂唱诗班",
+        author: "John Cross/Butterworth and Heath 雕刻",
+        description: "画面描绘了丹麦 - 英格兰国王克努特乘船巡游尼恩河时，聆听伊利大教堂唱诗班歌声的场景。你可以重点观察国王的专注神态与周围侍从的肃穆姿态，体会中世纪君主与宗教权威之间的互动。雕刻师用细腻的排线表现水面的波光、衣袍的质感与远处教堂的朦胧轮廓，层次丰富，是维多利亚时期钢版画的典型风格。作品既展现了克努特的统治权威，也反映了当时英国社会对中世纪宗教与王权关系的推崇。",
+        type: "版画",
+        image: "picture/克努特大帝在尼恩河上聆听伊利大教堂唱诗班.jpg",
+        tags: ["英国", "克努特大帝", "中世纪复兴", "王权","19世纪"],
+        year: "1880",
+        theme: "religious",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "爱德华四世遭谋杀的儿子们在伦敦塔的葬礼",
+        author: "John Cross/Butterworth and Heath 雕刻",
+        description: "画面描绘了英国历史上著名的 “塔中王子” 事件 —— 爱德华四世的两个儿子被谋杀后，在伦敦塔秘密下葬的场景。你可以重点观察人物的肃穆神态与压抑的氛围，感受这桩历史悬案的悲剧性。雕刻师用密集的排线塑造出石质墙面的粗糙质感与衣袍的厚重层次，阴影的运用强化了场景的阴郁与沉重，是维多利亚时期钢版画的典型风格。作品反映了 19 世纪英国社会对本国历史悬案的关注，也暗含着对权力斗争残酷性的反思。",
+        type: "版画",
+        image: "picture/爱德华四世遭谋杀的儿子们在伦敦塔的葬礼.jpg",
+        tags: ["英国", "爱德华四世", "中世纪复兴", "维多利亚","塔中王子","19世纪"],
+        year: "1880",
+        theme: "history",
+        technique: "钢版画",
+        price: "标准收藏级",
+        mediaType: "image"
+    },
+	{
+        name: "瑞士日内瓦湖畔的蒙特勒",
+        author: "《Picturesque Europe》版画集",
+        description: "画面以蒙特勒的瀑布与古建为核心，既精确还原了阿尔卑斯山南麓的建筑风貌与水文景观，又通过细腻的明暗层次，营造出宁静的欧洲小镇氛围。前景洗衣的村民增添了生活气息，让风景更具叙事感。作为铜版画，它保留了蚀刻线条的硬朗质感，同时手工上色的柔和色彩，让画面兼具版画的锐利与水彩的温润，体现了 19 世纪欧洲版画的典型工艺水准。这幅画不仅是艺术品，也是 19 世纪欧洲旅游业兴起的视觉见证，反映了当时人们对瑞士湖光山色的追捧，具有历史文献价值。",
+        type: "版画",
+        image: "picture/瑞士日内瓦湖畔的蒙特勒.mp4",
+        tags: ["瑞士", "日内瓦湖", "旅行","自然风光","19世纪"],
+        year: "1878",
+        theme: "landscape",
+        technique: "手工上色板画",
+        price: "典藏级",
+        mediaType: "video"
+    },
+	{
+        name: "Off the Rialto（里亚托桥畔）",
+        author: "《Picturesque Europe》版画集 Harry Fenn",
+        description: "这是一幅 1878 年出自《Picturesque Europe》（如画的欧洲）系列的彩色木刻版画，由美国画家 Harry Fenn 创作原图，后经制版印刷并手工上色，描绘了威尼斯里亚托桥旁的运河与城市风貌。采用木刻版画 + 手工上色的技法，以细腻的线条刻画了石桥的斑驳质感与建筑的光影层次，色彩柔和且层次丰富，兼具版画的表现力与水彩的氛围感，是 19 世纪欧洲旅行风景版画的典型代表。",
+        type: "版画",
+        image: "picture/里亚托桥畔.mp4",
+        tags: ["威尼斯", "贡多拉", "旅行","自然风光","19世纪"],
+        year: "1878",
+        theme: "landscape",
+        technique: "手工上色板画",
+        price: "典藏级",
+        mediaType: "video"
+    },
+	{
+        name: "西班牙昆卡圣巴勃罗桥",
+        author: "《Picturesque Europe》版画集",
+        description: "这是一幅 19 世纪末出自《Picturesque Europe》（如画的欧洲）系列的彩色木刻版画，描绘了西班牙昆卡古城的标志性景观 —— 圣巴勃罗桥与悬于崖壁之上的老城风貌。它采用木刻版画 + 手工上色技法，以细腻的线条刻画了崖壁的粗糙质感、石桥的厚重结构与建筑的错落层次。柔和的色彩既保留了版画的线条张力，又增添了水彩般的氛围感，是 19 世纪欧洲 “如画风景” 美学的典型体现。昆卡作为西班牙 “悬空之城” 的独特景观，这幅版画承载了维多利亚时代欧洲旅行者对伊比利亚半岛异域风貌的探索与审美传播，是当时欧洲文化视野拓展的视觉见证。",
+        type: "版画",
+        image: "picture/西班牙昆卡圣巴勃罗桥.jpg",
+        tags: ["西班牙", "昆卡古城", "旅行","自然风光","19世纪"],
+        year: "1878",
+        theme: "landscape",
+        technique: "手工上色板画",
+        price: "典藏级",
+        mediaType: "image"
+    },
+	{
+        name: "那不勒斯附近的波佐利",
+        author: "《Picturesque Europe》版画集",
+        description: "这是一幅 19 世纪末出自《Picturesque Europe》（如画的欧洲）系列的彩色木刻版画，描绘了意大利那不勒斯附近波佐利的海岸景观，前景是汹涌的海面与渔船，背景是矗立在海岬上的中世纪城堡（现为波佐利的地标性建筑）。它采用木刻版画 + 手工上色技法，以密集的线条刻画了海浪的动感与岩石的粗糙质感，色彩层次丰富，既保留了版画的线条张力，又通过柔和的蓝灰、暖棕配色营造出地中海的苍茫氛围，是 19 世纪欧洲 “如画风景” 美学的典型体现。波佐利作为古罗马时期的重要港口，这幅版画承载了维多利亚时代欧洲旅行者对意大利南部古典遗迹与地中海风情的探索，是当时欧洲文化视野拓展的视觉见证。",
+        type: "版画",
+        image: "picture/那不勒斯附近的波佐利.mp4",
+        tags: ["意大利", "波佐利", "那不勒斯","中世纪城堡", "旅行","自然风光","19世纪"],
+        year: "1878",
+        theme: "landscape",
+        technique: "手工上色板画",
+        price: "典藏级",
+        mediaType: "video"
+    },
+	{
+        name: "波佐利",
+        author: "透纳/W. R. Smith 雕刻",
+        description: "它源自英国浪漫主义风景画大师透纳的原作，雕刻师 W. R. Smith 精准还原了透纳标志性的光影与大气晕染效果，是透纳作品版画中极具代表性的一件。这幅版画记录了 19 世纪初波佐利的海湾地貌、城镇风貌与当地居民的生活场景，是研究意大利南部地中海沿岸历史与人文的重要视觉文献。透纳的原作以 “光与空气” 的表现著称，这幅版画保留了原作中天空的朦胧感与海面的静谧氛围，通过细腻的线条与柔和的手工上色，将浪漫主义对自然诗意的追求展现得淋漓尽致。",
+        type: "版画",
+        image: "picture/波佐利.mp4",
+        tags: ["意大利","透纳", "波佐利", "旅行","自然风光","19世纪"],
+        year: "1878",
+        theme: "landscape",
+        technique: "手工上色板画",
+        price: "典藏级",
+        mediaType: "video"
+    }
+];
+
+        // 主题映射
+        const themeMap = {
+            'master': '大师经典作品',
+            'religious': '宗教与神话题材',
+            'landscape': '风景与建筑题材',
+            'literary': '文学与史诗题材',
+            'war': '战争题材',
+			'history': '历史题材',
+            'dailylife': '世俗生活题材',
+            'books': '版画书籍与合集'
+        };
+
+        // DOM元素
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const searchResults = document.getElementById('search-results');
+        const resultList = document.getElementById('result-list');
+        const resultCount = document.getElementById('result-count');
+        const searchTags = document.querySelectorAll('.search-tag');
+        const centuryFilter = document.getElementById('century-filter');
+        const techniqueFilter = document.getElementById('technique-filter');
+        const priceFilter = document.getElementById('price-filter');
+        const imageModal = document.getElementById('imageModal');
+        const videoModal = document.getElementById('videoModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalAuthor = document.getElementById('modalAuthor');
+        const modalDescription = document.getElementById('modalDescription');
+        const videoModalTitle = document.getElementById('videoModalTitle');
+        const videoModalAuthor = document.getElementById('videoModalAuthor');
+        const videoModalDescription = document.getElementById('videoModalDescription');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+        const resetZoomBtn = document.getElementById('resetZoom');
+        const toggleMagnifierBtn = document.getElementById('toggleMagnifier');
+        const magnifier = document.getElementById('magnifier');
+        const magnifierImg = document.getElementById('magnifierImg');
+        const playPauseVideoBtn = document.getElementById('playPauseVideo');
+        const muteVideoBtn = document.getElementById('muteVideo');
+        const fullscreenVideoBtn = document.getElementById('fullscreenVideo');
+
+        // 全局变量
+        let currentScale = 1;
+        const scaleStep = 0.2;
+        let isMagnifierActive = false;
+        let currentFilteredPrints = [];
+        let isVideoPlaying = false;
+        let isVideoMuted = false;
+
+        // 初始化页面
+        function initPage() {
+            // 按主题渲染所有版画
+            Object.keys(themeMap).forEach(theme => {
+                const themePrints = printsData.filter(print => print.theme === theme);
+                if (themePrints.length > 0) {
+                    renderPrints(themePrints, theme);
                 }
             });
+
+            // 设置搜索标签事件
+            searchTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    searchInput.value = tag.getAttribute('data-tag');
+                    performSearch();
+                });
+            });
+
+            // 设置筛选器事件
+            centuryFilter.addEventListener('change', performSearch);
+            techniqueFilter.addEventListener('change', performSearch);
+            priceFilter.addEventListener('change', performSearch);
             
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === currentSectionId) {
+            // 设置搜索事件
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch();
+            });
+
+            // 设置时间轴交互
+            document.querySelectorAll('.work-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const year = this.getAttribute('data-year');
+                    const title = this.getAttribute('data-title');
+                    
+                    // 搜索对应年份的作品
+                    searchInput.value = year;
+                    performSearch();
+                });
+            });
+
+            // 设置模态框关闭事件
+            closeModalButtons.forEach(btn => {
+                btn.addEventListener('click', closeAllModals);
+            });
+
+            // 点击模态框背景关闭
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) closeAllModals();
+            });
+            
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) closeAllModals();
+            });
+
+            // 设置图片模态框缩放控制
+            zoomInBtn.addEventListener('click', () => {
+                currentScale += scaleStep;
+                modalImg.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+            });
+
+            zoomOutBtn.addEventListener('click', () => {
+                if (currentScale > scaleStep) {
+                    currentScale -= scaleStep;
+                    modalImg.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+                }
+            });
+
+            resetZoomBtn.addEventListener('click', () => {
+                currentScale = 1;
+                modalImg.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+            });
+
+            // 设置放大镜切换
+            toggleMagnifierBtn.addEventListener('click', () => {
+                isMagnifierActive = !isMagnifierActive;
+                if (isMagnifierActive) {
+                    magnifier.style.display = 'block';
+                    toggleMagnifierBtn.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    magnifier.style.display = 'none';
+                    toggleMagnifierBtn.innerHTML = '<i class="fas fa-search"></i>';
+                }
+            });
+
+            // 设置图片模态框内鼠标移动事件（放大镜）
+            imageModal.addEventListener('mousemove', (e) => {
+                if (!isMagnifierActive) return;
+                
+                const rect = modalImg.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // 显示放大镜
+                magnifier.classList.add('active');
+                
+                // 设置放大镜位置
+                magnifier.style.left = (e.clientX - 100) + 'px';
+                magnifier.style.top = (e.clientY - 100) + 'px';
+                
+                // 计算放大图片的位置
+                const imgWidth = modalImg.offsetWidth;
+                const imgHeight = modalImg.offsetHeight;
+                
+                const bgX = (x / imgWidth) * 100;
+                const bgY = (y / imgHeight) * 100;
+                
+                magnifierImg.style.left = -x * 2 + 100 + 'px';
+                magnifierImg.style.top = -y * 2 + 100 + 'px';
+            });
+
+            imageModal.addEventListener('mouseleave', () => {
+                magnifier.classList.remove('active');
+            });
+
+            // 设置视频控制
+            playPauseVideoBtn.addEventListener('click', toggleVideoPlayback);
+            muteVideoBtn.addEventListener('click', toggleVideoMute);
+            fullscreenVideoBtn.addEventListener('click', toggleVideoFullscreen);
+            
+            // 监听视频播放状态变化
+            modalVideo.addEventListener('play', () => {
+                isVideoPlaying = true;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+            
+            modalVideo.addEventListener('pause', () => {
+                isVideoPlaying = false;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+            
+            // 监听视频静音状态变化
+            modalVideo.addEventListener('volumechange', () => {
+                isVideoMuted = modalVideo.muted;
+                muteVideoBtn.innerHTML = isVideoMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+            });
+
+            // 初始化平滑滚动导航
+            initSmoothScroll();
+            
+            // 初始搜索（显示所有作品）
+            currentFilteredPrints = printsData;
+        }
+
+        // 渲染版画到对应主题区域
+        function renderPrints(prints, theme) {
+            const themeSection = document.querySelector(`#${theme} .collection-grid`);
+            if (!themeSection) return;
+            
+            themeSection.innerHTML = '';
+            
+            prints.forEach(print => {
+                const printElement = createPrintElement(print);
+                themeSection.appendChild(printElement);
+            });
+        }
+
+        // 创建版画元素
+        function createPrintElement(print) {
+            const div = document.createElement('div');
+            div.className = 'collection-item';
+            div.setAttribute('data-year', print.year);
+            div.setAttribute('data-tags', print.tags.join(','));
+            div.setAttribute('data-theme', print.theme);
+            div.setAttribute('data-technique', print.technique);
+            div.setAttribute('data-price', print.price);
+            div.setAttribute('data-media-type', print.mediaType);
+            
+            // 价格范围计算
+            const priceRange = print.price.split('-');
+            const minPrice = parseInt(priceRange[0]) || 0;
+            const maxPrice = parseInt(priceRange[1]) || 0;
+            const avgPrice = Math.round((minPrice + maxPrice) / 2);
+            
+            // 根据媒体类型生成不同的内容
+            let mediaContent = '';
+            if (print.mediaType === 'video') {
+                mediaContent = `
+                    <div class="collection-img-container">
+                        <video class="collection-video" loop muted playsinline>
+                            <source src="${print.image}" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                        <div class="video-play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-indicator">
+                            <i class="fas fa-video"></i>
+                            <span>视频展示</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                mediaContent = `
+                    <div class="collection-img-container">
+                        <img src="${print.image}" alt="${print.name}" class="collection-img" data-modal-src="${print.image}">
+                        <div class="magnifier-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            div.innerHTML = `
+                ${mediaContent}
+                <div class="collection-content">
+                    <h3 class="collection-title">${print.name}</h3>
+                    <p class="collection-author">作者：${print.author}</p>
+                    <p class="collection-description">${print.description.length > 120 ? print.description.substring(0, 120) + '...' : print.description}</p>
+                    
+                    <div class="collection-tags">
+                        ${print.tags.map(tag => `<div class="collection-tag">${tag}</div>`).join('')}
+                    </div>
+                    
+                    <div class="value-section">
+                        <p class="value-title">艺术价值：</p>
+                        <p class="value-content">${getArtValue(print)}</p>
+                        <p class="value-title">收藏价值：</p>
+                        <p class="value-content">${getCollectionValue(print)}</p>
+						<p class="value-title">版画品阶</p>
+                        <span class="value-content"> ${print.price} </span>
+                    </div>
+                </div>
+            `;
+            
+            // 添加点击事件
+            const imgContainer = div.querySelector('.collection-img-container');
+            if (print.mediaType === 'video') {
+                imgContainer.addEventListener('click', () => openVideoModal(print));
+                const videoPlayButton = div.querySelector('.video-play-button');
+                videoPlayButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openVideoModal(print);
+                });
+            } else {
+                imgContainer.addEventListener('click', () => openImageModal(print));
+            }
+            
+            // 添加标签点击事件
+            div.querySelectorAll('.collection-tag').forEach(tag => {
+                tag.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    searchInput.value = tag.textContent;
+                    performSearch();
+                });
+            });
+            
+            return div;
+        }
+
+        // 获取艺术价值描述
+        function getArtValue(print) {
+            const author = print.author;
+            const technique = print.technique;
+            const year = parseInt(print.year);
+            
+            if (author.includes('伦勃朗')) {
+                return '伦勃朗是西方艺术史上最重要的版画家之一，他的蚀刻技法开创了新的艺术表现方式，作品体现了标志性的明暗对比法和细腻的人物刻画。';
+            } else if (author.includes('丢勒')) {
+                return '丢勒是北方文艺复兴的代表人物，他的版画作品以精密的线条和科学的人体比例著称，是文艺复兴时期人文主义思想的典型体现。';
+            } else if (author.includes('多雷')) {
+                return '多雷的版画作品融合了浪漫主义的戏剧性和古典主义的严谨构图，其木口木刻技法达到了版画艺术的巅峰。';
+            } else if (author.includes('柯罗')) {
+                return '柯罗是巴比松画派的核心人物，他的风景画以诗意的氛围和微妙的光影变化著称，影响了后来的印象派。';
+            } else if (technique.includes('木版画')) {
+                return '木版画技法具有独特的纹理和质感，能够表现丰富的层次和细节，是版画艺术中的重要形式。';
+            } else if (technique.includes('铜版画')) {
+                return '铜版画技法精细，线条流畅，能够表现细腻的明暗变化和丰富的细节层次。';
+            } else if (year < 1800) {
+                return '早期版画作品具有重要的历史价值，展现了版画艺术的发展历程和技术演变。';
+            } else {
+                return '此作品技法精湛，构图严谨，体现了版画艺术的独特魅力和艺术价值。';
+            }
+        }
+
+        // 获取收藏价值描述
+        function getCollectionValue(print) {
+            const author = print.author;
+            const year = parseInt(print.year);
+            const type = print.type;
+            
+            if (type.includes('版画书')) {
+                return '版画书籍系统收录了艺术家的代表性作品，是研究版画艺术的重要文献，具有极高的学术价值和收藏价值。';
+            } else if (year < 1800) {
+                return `${year}世纪原版版画存世稀少，且保存状态良好，具有极高的历史和艺术价值，是收藏市场的稀缺资源。`;
+            } else if (author.includes('伦勃朗') || author.includes('丢勒')) {
+                return '大师级艺术家的版画作品存世稀少，保存完好的早期印刷品尤为珍贵，具有极高的收藏价值和市场潜力。';
+            } else if (print.tags.includes('限量')) {
+                return '限量版版画制作工艺复杂，存世量少，且题材独特，深受收藏家青睐。';
+            } else {
+                return '此作品来源清晰，品相良好，具有较高的收藏价值和升值潜力。';
+            }
+        }
+
+        // 格式化价格
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // 执行搜索
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            const century = centuryFilter.value;
+            const technique = techniqueFilter.value;
+            const priceRange = priceFilter.value;
+            
+            // 过滤作品
+            currentFilteredPrints = printsData.filter(print => {
+                // 文本搜索
+                const textMatch = !query || 
+                    print.name.toLowerCase().includes(query) ||
+                    print.author.toLowerCase().includes(query) ||
+                    print.description.toLowerCase().includes(query) ||
+                    print.tags.some(tag => tag.toLowerCase().includes(query));
+                
+                // 世纪过滤
+                let centuryMatch = true;
+                if (century) {
+                    const year = parseInt(print.year);
+                    if (century === '16') centuryMatch = year >= 1500 && year < 1600;
+                    else if (century === '17') centuryMatch = year >= 1600 && year < 1700;
+                    else if (century === '18') centuryMatch = year >= 1700 && year < 1800;
+                    else if (century === '19') centuryMatch = year >= 1800 && year < 1900;
+                    else if (century === '20') centuryMatch = year >= 1900;
+                }
+                
+                // 技法过滤
+                const techniqueMatch = !technique || print.technique.includes(technique);
+                
+                // 价格过滤
+                let priceMatch = true;
+                if (priceRange) {
+                    const priceParts = print.price.split('-');
+                    const minPrice = parseInt(priceParts[0]) || 0;
+                    const maxPrice = parseInt(priceParts[1]) || 0;
+                    const avgPrice = Math.round((minPrice + maxPrice) / 2);
+                    
+                    if (priceRange === '0-50000') priceMatch = avgPrice <= 50000;
+                    else if (priceRange === '50000-100000') priceMatch = avgPrice >= 50000 && avgPrice <= 100000;
+                    else if (priceRange === '100000-200000') priceMatch = avgPrice >= 100000 && avgPrice <= 200000;
+                    else if (priceRange === '200000') priceMatch = avgPrice >= 200000;
+                }
+                
+                return textMatch && centuryMatch && techniqueMatch && priceMatch;
+            });
+            
+            // 显示搜索结果
+            displaySearchResults(currentFilteredPrints);
+            
+            // 更新主题区域的显示
+            updateThemeSections(currentFilteredPrints);
+        }
+
+        // 显示搜索结果
+        function displaySearchResults(prints) {
+            resultCount.textContent = prints.length;
+            
+            if (prints.length === 0) {
+                resultList.innerHTML = '<div class="search-result-item">未找到相关作品</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+            
+            resultList.innerHTML = '';
+            
+            prints.slice(0, 10).forEach(print => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                
+                const priceRange = print.price.split('-');
+                const minPrice = parseInt(priceRange[0]) || 0;
+                
+                // 根据媒体类型选择不同的图标
+                const mediaIcon = print.mediaType === 'video' ? '<i class="fas fa-video" style="margin-right: 5px; color: #ff6b6b;"></i>' : '';
+                
+                resultItem.innerHTML = `
+                    <img src="${print.mediaType === 'video' ? 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0iI2ZmNmI2YiI+PHBhdGggZD0iTTI0IDQxLjA2VjIyLjk0YzAtMS4xMi42Mi0yLjE1IDEuNjEtMi42NiAxLS41MiAyLjIyLS41MiAzLjIyIDBsMTUuMTQgOC4wNmMxIC41MSAxLjYxIDEuNTQgMS42MSAyLjY2IDAgMS4xMi0uNjEgMi4xNS0xLjYxIDIuNjZMMjguODMgNDMuNzJjLTEgLjUyLTIuMjIuNTItMy4yMiAwLTEtLjUxLTEuNjEtMS41NC0xLjYxLTIuNjZ6Ii8+PC9zdmc+' : print.image}" alt="${print.name}" class="search-result-img">
+                    <div class="search-result-info">
+                        <div class="search-result-title">${mediaIcon}${print.name}</div>
+                        <div class="search-result-details">${print.author} · ${themeMap[print.theme]}</div>
+                    </div>
+                    <div class="search-result-year">${print.year}年</div>
+                `;
+                
+                resultItem.addEventListener('click', () => {
+                    // 滚动到对应作品
+                    const printElement = findPrintElement(print);
+                    if (printElement) {
+                        printElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        
+                        // 高亮显示
+                        highlightPrint(printElement);
+                    }
+                    
+                    searchResults.classList.remove('active');
+                });
+                
+                resultList.appendChild(resultItem);
+            });
+            
+            if (prints.length > 10) {
+                const moreItem = document.createElement('div');
+                moreItem.className = 'search-result-item';
+                moreItem.style.textAlign = 'center';
+                moreItem.style.fontWeight = '600';
+                moreItem.style.color = '#8b4513';
+                moreItem.textContent = `还有 ${prints.length - 10} 件作品...`;
+                resultList.appendChild(moreItem);
+            }
+            
+            searchResults.classList.add('active');
+        }
+
+        // 查找版画元素
+        function findPrintElement(print) {
+            const allPrintElements = document.querySelectorAll('.collection-item');
+            for (let element of allPrintElements) {
+                const year = element.getAttribute('data-year');
+                const theme = element.getAttribute('data-theme');
+                if (year === print.year && theme === print.theme) {
+                    return element;
+                }
+            }
+            return null;
+        }
+
+        // 高亮显示版画
+        function highlightPrint(element) {
+            element.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.5), 0 20px 40px rgba(0,0,0,0.15)';
+            element.style.transform = 'translateY(-12px) scale(1.02)';
+            
+            setTimeout(() => {
+                element.style.boxShadow = '';
+                element.style.transform = '';
+            }, 3000);
+        }
+
+        // 更新主题区域显示
+        function updateThemeSections(prints) {
+            const searchQuery = searchInput.value.trim();
+            const hasSearch = searchQuery.length > 0 || 
+                centuryFilter.value || 
+                techniqueFilter.value || 
+                priceFilter.value;
+            
+            Object.keys(themeMap).forEach(theme => {
+                const themeSection = document.querySelector(`#${theme}`);
+                const themePrints = prints.filter(print => print.theme === theme);
+                
+                if (themePrints.length > 0) {
+                    themeSection.style.display = 'block';
+                    renderPrints(themePrints, theme);
+                } else if (hasSearch) {
+                    themeSection.style.display = 'none';
+                } else {
+                    themeSection.style.display = 'block';
+                    const allThemePrints = printsData.filter(print => print.theme === theme);
+                    renderPrints(allThemePrints, theme);
+                }
+            });
+        }
+
+        // 打开图片模态框
+        function openImageModal(print) {
+            imageModal.style.display = 'block';
+            modalImg.src = print.image;
+            magnifierImg.src = print.image;
+            modalTitle.textContent = print.name;
+            modalAuthor.textContent = `作者：${print.author}`;
+            modalDescription.textContent = print.description;
+            
+            // 重置缩放
+            currentScale = 1;
+            modalImg.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+            
+            // 关闭放大镜
+            isMagnifierActive = false;
+            magnifier.style.display = 'none';
+            toggleMagnifierBtn.innerHTML = '<i class="fas fa-search"></i>';
+        }
+
+        // 打开视频模态框
+        function openVideoModal(print) {
+            videoModal.style.display = 'block';
+            modalVideo.src = print.image;
+            videoModalTitle.textContent = print.name;
+            videoModalAuthor.textContent = `作者：${print.author}`;
+            videoModalDescription.textContent = print.description;
+            
+            // 自动播放视频
+            modalVideo.play().then(() => {
+                isVideoPlaying = true;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }).catch(err => {
+                console.log('自动播放被阻止:', err);
+                isVideoPlaying = false;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+            
+            // 初始化静音状态
+            isVideoMuted = modalVideo.muted;
+            muteVideoBtn.innerHTML = isVideoMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
+
+        // 切换视频播放/暂停
+        function toggleVideoPlayback() {
+            if (isVideoPlaying) {
+                modalVideo.pause();
+                isVideoPlaying = false;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                modalVideo.play();
+                isVideoPlaying = true;
+                playPauseVideoBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+
+        // 切换视频静音
+        function toggleVideoMute() {
+            modalVideo.muted = !modalVideo.muted;
+            isVideoMuted = modalVideo.muted;
+            muteVideoBtn.innerHTML = isVideoMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
+
+        // 切换视频全屏
+        function toggleVideoFullscreen() {
+            if (!document.fullscreenElement) {
+                if (modalVideo.requestFullscreen) {
+                    modalVideo.requestFullscreen();
+                } else if (modalVideo.webkitRequestFullscreen) {
+                    modalVideo.webkitRequestFullscreen();
+                } else if (modalVideo.msRequestFullscreen) {
+                    modalVideo.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // 关闭所有模态框
+        function closeAllModals() {
+            imageModal.style.display = 'none';
+            videoModal.style.display = 'none';
+            
+            // 暂停视频
+            if (modalVideo) {
+                modalVideo.pause();
+                isVideoPlaying = false;
+            }
+        }
+
+        // 初始化平滑滚动导航
+        function initSmoothScroll() {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', e => {
+                    e.preventDefault();
+                    const targetId = item.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // 更新活动导航项
+                    document.querySelectorAll('.nav-item').forEach(nav => {
+                        nav.classList.remove('active');
+                    });
                     item.classList.add('active');
-                }
+                    
+                    // 滚动到目标位置
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
             });
-        });
+            
+            // 根据滚动位置更新活动导航项
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('section');
+                const navItems = document.querySelectorAll('.nav-item');
+                
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSectionId = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === currentSectionId) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // 页面加载时初始化
+        window.addEventListener('load', initPage);
         
-        // 页面加载时显示第一个藏品分类
-        window.addEventListener('load', () => {
-            document.querySelector('.nav-item.active').click();
+        // 添加键盘快捷键支持
+        document.addEventListener('keydown', (e) => {
+            // ESC键关闭模态框
+            if (e.key === 'Escape') {
+                closeAllModals();
+            }
+            
+            // 空格键切换视频播放/暂停（仅在视频模态框显示时）
+            if (e.key === ' ' && videoModal.style.display === 'block') {
+                e.preventDefault();
+                toggleVideoPlayback();
+            }
+            
+            // M键切换视频静音（仅在视频模态框显示时）
+            if (e.key === 'm' && videoModal.style.display === 'block') {
+                e.preventDefault();
+                toggleVideoMute();
+            }
+            
+            // F键切换全屏（仅在视频模态框显示时）
+            if (e.key === 'f' && videoModal.style.display === 'block') {
+                e.preventDefault();
+                toggleVideoFullscreen();
+            }
         });
     </script>
 </body>
